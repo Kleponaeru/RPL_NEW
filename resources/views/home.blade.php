@@ -174,19 +174,19 @@
               <div class="detail-box">
                 <div class="heading_container">
                   <h2>
-                    Best Experinced Freelancer Here
+                    Lorem Ipsum
                   </h2>
                 </div>
                 <p>
-                  It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 </p>
                 <div class="btn-box">
                   <a href="" class="btn-1">
                     Read More
                   </a>
-                  <a href="" class="btn-2">
+                  {{-- <a href="" class="btn-2">
                     Hire
-                  </a>
+                  </a> --}}
                 </div>
               </div>
             </div>
@@ -199,7 +199,7 @@
 
       <!-- category section -->
 
-      <section class="category_section layout_padding">
+      {{-- <section class="category_section layout_padding">
         <div class="container">
           <div class="heading_container">
             <h2>
@@ -269,7 +269,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
 
 
       <!-- end category section -->
@@ -287,10 +287,10 @@
           </div>
           <div class="detail-box">
             <h2>
-              About Spering Company
+              Lorem ipsum dolor sit amet
             </h2>
             <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If youThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
             </p>
             <a href="">
               Read More
@@ -524,7 +524,7 @@
                 <div class="col-md-3  offset-lg-1">
                   <div class="info_form ">
                     <h5>
-                      Newsletter
+                      Send Feedback
                     </h5>
                     <form action="">
                       <input type="email" placeholder="Email">
