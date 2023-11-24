@@ -16,12 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/welcome', function () {
-//     return view('welcome');
-// });
-
-
-
 Route::middleware(['guest'])->group(function () {
     Route::get('/locations', [LocationController::class, 'index']);
     Route::get('/', [PageController::class, 'home']);
