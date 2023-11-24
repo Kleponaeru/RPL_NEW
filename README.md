@@ -4,10 +4,10 @@ LUNA is a Waste Management Website developed by a talented group of students fro
 
 ## Meet the Team
 
-- [Kelvin Lie](https://github.com/Kleponaeru)
-- [Valentino Raviendra Christando](https://github.com/Christando)
-- [Leo Saputra](https://github.com/Leosaputra0)
-- [Putu Jeevallucas Jnanamaitriya Surya Gautama](https://github.com/Jeevalucas)
+- [Kelvin Lie](https://github.com/kleponaeru)
+- [Valentino Raviendra Christando](https://github.com/christando)
+- [Leo Saputra](https://github.com/leosaputra0)
+- [Putu Jeevallucas Jnanamaitriya Surya Gautama](https://github.com/Jeevallucas)
 
 ## 🚀 Project Overview
 
