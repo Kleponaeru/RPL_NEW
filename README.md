@@ -1,4 +1,4 @@
-# 🌕 LUNA - Waste Management Website
+# 🗑️ LUNA - Waste Management Website
 
 LUNA is a Waste Management Website developed by a talented group of students from Duta Wacana Christian University. Our mission is to address waste management challenges in Yogyakarta through an innovative online platform.
 
@@ -35,3 +35,4 @@ We welcome contributions to improve and expand LUNA. To contribute:
 3. Submit a pull request with a detailed description of your changes.
 
 Explore LUNA and join us in creating a cleaner, more sustainable Yogyakarta!
+Let's make a positive impact together! 🌱🌏
