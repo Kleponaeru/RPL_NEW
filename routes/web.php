@@ -3,6 +3,8 @@
 use App\Http\Controllers\authController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PemilikController;
+use App\Http\Controllers\PengambilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,9 +30,13 @@ Route::middleware(['guest'])->group(function () {
 //     Route::middleware(['PreventBackHistory'])->group(function () {
         // Route::middleware(['CekRole:Pengambil'])->group(function () {
             Route::get('/dashboard/pengambil', [PageController::class, 'dashboardPengambil']);
+            // Route::get('/profile/pengambil', [PageController::class, 'dashboardPengambil']);
         // });
         // Route::middleware(['CekRole:Pemilik'])->group(function () {
             Route::get('/dashboard/pemilik', [PageController::class, 'dashboardPemilik']);
+            Route::get('/profile/pemilik', [PemilikController::class, 'profilepemilik']);
+            Route::get('/pemilik/buang', [PemilikController::class, 'formPesanan']);
+            Route::post('/pemilik/postpesanan', [PemilikController::class, 'postPesanan']);
         // });
         // Route::middleware(['CekRole:Bank'])->group(function () {
             Route::get('/dashboard/bank', [PageController::class, 'dashboardBank']);
