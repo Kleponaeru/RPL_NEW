@@ -58,8 +58,8 @@
 
                 </ul>
                 <a class="btn btn-primary" href="/profile/pemilik" role="button">Profile <i class="bi bi-person-fill"></i></a>
-                                   
-                    
+
+
     </div>
     </nav>
     <!-- partial -->
@@ -258,7 +258,7 @@
                               <div class="d-flex justify-content-between align-items-center mb-3">
                                   <p class="card-title">Tabel Pesanan</p>
                                   <a class="btn btn-primary" href="/pemilik/buang" role="button">
-                                    <i class="bi bi-plus-circle-fill"></i> Buat Pesanan 
+                                    <i class="bi bi-plus-circle-fill"></i> Buat Pesanan
                                   </a>
                               </div>
                               <div class="row">
@@ -282,11 +282,11 @@
                                                     <td>{{ $n->jam }}</td>
                                                     <td>{{ $n->status }}</td>
                                                     <td>
-                                                        <a href="pemilik/formedit/{{ $n->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                                                        <a href="pemilik/delete/{{ $n->id }}" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+                                                        <a href="/pemilik/formedit/{{ $n->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                                        <a href="/pemilik/delete/{{ $n->id }}" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
                                                     </td>
                                                 </tr>
-                                            @endforeach                                            
+                                            @endforeach
                                               </tbody>
                                           </table>
                                       </div>
@@ -295,7 +295,7 @@
                           </div>
                       </div>
                   </div>
-              </div>              
+              </div>
             </div>
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
