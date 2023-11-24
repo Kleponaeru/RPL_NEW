@@ -244,7 +244,7 @@
                     <div class="col-md-12 grid-margin">
                         <div class="row">
                             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                <h3 class="font-weight-bold">Welcome, {{ Auth::user()->user ?? '' }}</h3>
+                                <h3 class="font-weight-bold">Welcome! {{ Auth::user()->user ?? '' }}</h3>
                                 <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span
                                         class="text-primary">3 unread alerts!</span></h6>
                             </div>
@@ -270,23 +270,23 @@
                                                       <th>No</th>
                                                       <th>Berat Sampah</th>
                                                       <th>Jam Pengambilan</th>
-                                                      <th>Pengambil</th>
                                                       <th>Status</th>
+                                                      <th>Action</th>
                                                   </tr>
                                               </thead>
                                               <tbody>
-                                                {{-- @foreach ($orders as $idx => $n)
+                                                @foreach ($orders as $idx => $n)
                                                 <tr>
                                                     <th scope="row">{{ $orders->firstItem() + $idx }}</th>
                                                     <td>{{ $n->kg_sampah }}</td>
                                                     <td>{{ $n->jam }}</td>
                                                     <td>{{ $n->status }}</td>
                                                     <td>
-                                                        <a href="students/formedit/{{ $n->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                                                        <a href="students/delete/{{ $n->id }}" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+                                                        <a href="pemilik/formedit/{{ $n->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                                        <a href="pemilik/delete/{{ $n->id }}" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
                                                     </td>
                                                 </tr>
-                                            @endforeach                                             --}}
+                                            @endforeach                                            
                                               </tbody>
                                           </table>
                                       </div>

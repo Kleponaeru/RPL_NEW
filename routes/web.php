@@ -29,11 +29,11 @@ Route::middleware(['guest'])->group(function () {
 // Route::middleware(['auth'])->group(function () {
 //     Route::middleware(['PreventBackHistory'])->group(function () {
         // Route::middleware(['CekRole:Pengambil'])->group(function () {
-            Route::get('/dashboard/pengambil', [PageController::class, 'dashboardPengambil']);
+            Route::get('/dashboard/pengambil', [PengambilController::class, 'Pengambil']);
             // Route::get('/profile/pengambil', [PageController::class, 'dashboardPengambil']);
         // });
         // Route::middleware(['CekRole:Pemilik'])->group(function () {
-            Route::get('/dashboard/pemilik', [PageController::class, 'dashboardPemilik']);
+            Route::get('/dashboard/pemilik', [PemilikController::class, 'Pemilik']);
             Route::get('/profile/pemilik', [PemilikController::class, 'profilepemilik']);
             Route::get('/pemilik/buang', [PemilikController::class, 'formPesanan']);
             Route::post('/pemilik/postpesanan', [PemilikController::class, 'postPesanan']);
