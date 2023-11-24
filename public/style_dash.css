@@ -30621,7 +30621,14 @@
   @media (max-width: 991px) {
     #settings-trigger {
       display: none;
-    }
+    }/* Add this CSS to override the ::after pseudo-element styles */
+
+.btn-secondary.dropdown-toggle::after {
+  content: none !important;
+}
+
+
+
   }
   
   /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
