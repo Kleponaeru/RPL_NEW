@@ -34,15 +34,4 @@ We welcome contributions to improve and expand LUNA. To contribute:
 2. Create a new branch for your feature or bug fix.
 3. Submit a pull request with a detailed description of your changes.
 
-## 📄 License
-
-LUNA is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## 📧 Contact
-
-For questions or collaboration opportunities, feel free to reach out to us:
-
-- Email: [team@example.com](mailto:team@example.com)
-- Twitter: [@LUNAWasteMgmt](https://twitter.com/LUNAWasteMgmt)
-
 Explore LUNA and join us in creating a cleaner, more sustainable Yogyakarta!
