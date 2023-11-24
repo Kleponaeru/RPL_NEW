@@ -35,4 +35,5 @@ We welcome contributions to improve and expand LUNA. To contribute:
 3. Submit a pull request with a detailed description of your changes.
 
 Explore LUNA and join us in creating a cleaner, more sustainable Yogyakarta!
+
 Let's make a positive impact together! 🌱🌏
