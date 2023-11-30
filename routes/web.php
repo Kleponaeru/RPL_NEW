@@ -30,6 +30,14 @@ Route::middleware(['guest'])->group(function () {
 //     Route::middleware(['PreventBackHistory'])->group(function () {
         // Route::middleware(['CekRole:Pengambil'])->group(function () {
             Route::get('/dashboard/pengambil', [PengambilController::class, 'Pengambil']);
+
+
+            Route::put('/status/confirm/{id}', [PengambilController::class, 'updatestatus'])->name('confirm.status');
+
+
+
+            Route::put('/status/change/{id}', [PengambilController::class, 'updatestatus'])->name('change.status');
+
             // Route::get('/profile/pengambil', [PageController::class, 'dashboardPengambil']);
         // });
         // Route::middleware(['CekRole:Pemilik'])->group(function () {
