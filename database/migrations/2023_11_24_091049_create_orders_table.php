@@ -16,6 +16,7 @@ return new class extends Migration
             $table->decimal('kg_sampah', 8, 2);
             $table->string('jam');
             $table->string('status');
+            $table->string('jns_smph');
             $table->timestamps();
         });
     }

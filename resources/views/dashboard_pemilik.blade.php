@@ -270,6 +270,7 @@
                                                       <th>No</th>
                                                       <th>Berat Sampah</th>
                                                       <th>Jam Pengambilan</th>
+                                                      <th>Jenis</th>
                                                       <th>Status</th>
                                                       <th>Action</th>
                                                   </tr>
@@ -280,6 +281,7 @@
                                                     <th scope="row">{{ $orders->firstItem() + $idx }}</th>
                                                     <td>{{ $n->kg_sampah }}</td>
                                                     <td>{{ $n->jam }}</td>
+                                                    <td>{{ $n->jns_smph }}</td>
                                                     <td>{{ $n->status }}</td>
                                                     <td>
                                                         <a href="pemilik/formedit/{{ $n->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>

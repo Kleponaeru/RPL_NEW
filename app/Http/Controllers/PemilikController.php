@@ -27,6 +27,7 @@ class PemilikController extends Controller
             'kg_sampah'=>$request->kg_sampah,
             'jam'=>$request->jam,
             'status' =>$request->status,
+            'jns_smph' =>$request->jns_smph,
         ]);
         return redirect("/dashboard/pemilik");
     }
