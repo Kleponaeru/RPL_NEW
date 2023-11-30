@@ -36,6 +36,8 @@ Route::middleware(['guest'])->group(function () {
             Route::get('/pengambil/delete/{id}', [PengambilController::class, 'delete']);
             Route::get('/pengambil/formedit/{id}', [PengambilController::class, 'formedit']);
             Route::PUT('/pengambil/update/{id}', [PengambilController::class, 'update']);
+            Route::put('/status/confirm/{id}', [PengambilController::class, 'updatestatus'])->name('confirm.status');
+            Route::put('/status/change/{id}', [PengambilController::class, 'updatestatus'])->name('change.status');
 
             // Route::get('/profile/pengambil', [PageController::class, 'dashboardPengambil']);
         // });
@@ -51,6 +53,7 @@ Route::middleware(['guest'])->group(function () {
         // });
         // Route::middleware(['CekRole:Bank'])->group(function () {
             Route::get('/dashboard/bank', [BankController::class, 'Bank']);
+            
         // });
 //logout
 Route::get('/logout', [authController::class, 'logout']);

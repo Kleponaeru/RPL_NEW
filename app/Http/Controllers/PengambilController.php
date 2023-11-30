@@ -52,4 +52,13 @@ class PengambilController extends Controller
         $n = PengambilSampah::find($id);
         return view('editpesanan_pengambil', ['n'=>$n]);
     }
+    public function updatestatus($id, Request $request)
+    {
+        $statusValue = $request->input('status');
+
+        // Update your model or database table with the new status value
+        PemilikSampah::where('id', $id)->update(['status' => $statusValue]);
+
+        return redirect('/dashboard/pengambil');
+    }
 }
