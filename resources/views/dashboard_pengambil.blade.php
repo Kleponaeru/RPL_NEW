@@ -243,6 +243,83 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="table-responsive">
+                                                @if (session('flash_added'))
+                                                <div class="alert alert-success alert-dismissible fade show"
+                                                    role="alert" id="alert">
+                                                    <strong>{{ session('flash_added') }}</strong>
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <!-- Automatic dismissal using JavaScript -->
+                                                <script type="text/javascript">
+                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                        setTimeout(function() {
+                                                            var alert = document.getElementById('alert');
+                                                            alert.parentNode.removeChild(alert);
+                                                        }, 3500);
+                                                    });
+                                                </script>
+                                                 @elseif (session('flash_edited'))
+                                                 <div class="alert alert-warning alert-dismissible fade show"
+                                                     role="alert" id="alert">
+                                                     <strong>{{ session('flash_edited') }}</strong>
+                                                     <button type="button" class="close" data-dismiss="alert"
+                                                         aria-label="Close">
+                                                         <span aria-hidden="true">&times;</span>
+                                                     </button>
+                                                 </div>
+
+                                                 <!-- Automatic dismissal using JavaScript -->
+                                                 <script type="text/javascript">
+                                                     document.addEventListener('DOMContentLoaded', function() {
+                                                         setTimeout(function() {
+                                                             var alert = document.getElementById('alert');
+                                                             alert.parentNode.removeChild(alert);
+                                                         }, 3500);
+                                                     });
+                                                 </script>
+                                                 @elseif (session('flash_deleted'))
+                                                 <div class="alert alert-danger alert-dismissible fade show"
+                                                     role="alert" id="alert">
+                                                     <strong>{{ session('flash_deleted') }}</strong>
+                                                     <button type="button" class="close" data-dismiss="alert"
+                                                         aria-label="Close">
+                                                         <span aria-hidden="true">&times;</span>
+                                                     </button>
+                                                 </div>
+
+                                                 <!-- Automatic dismissal using JavaScript -->
+                                                 <script type="text/javascript">
+                                                     document.addEventListener('DOMContentLoaded', function() {
+                                                         setTimeout(function() {
+                                                             var alert = document.getElementById('alert');
+                                                             alert.parentNode.removeChild(alert);
+                                                         }, 3500);
+                                                     });
+                                                 </script>
+                                                  @elseif (session('flash_status'))
+                                                  <div class="alert alert-info alert-dismissible fade show"
+                                                      role="alert" id="alert">
+                                                      <strong>{{ session('flash_status') }}</strong>
+                                                      <button type="button" class="close" data-dismiss="alert"
+                                                          aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                  </div>
+ 
+                                                  <!-- Automatic dismissal using JavaScript -->
+                                                  <script type="text/javascript">
+                                                      document.addEventListener('DOMContentLoaded', function() {
+                                                          setTimeout(function() {
+                                                              var alert = document.getElementById('alert');
+                                                              alert.parentNode.removeChild(alert);
+                                                          }, 3500);
+                                                      });
+                                                  </script>
+                                            @endif
                                                 <table id="example" class="display expandable-table"
                                                     style="width:100%">
                                                     <thead>

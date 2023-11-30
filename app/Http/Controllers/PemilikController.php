@@ -13,7 +13,7 @@ class PemilikController extends Controller
 
     public function Pemilik()
     {
-        $orders = PemilikSampah::orderBy('id', 'desc')->paginate(5);
+        $orders = PemilikSampah::orderBy('id', 'desc')->paginate(15);
         return view('dashboard_pemilik', ['orders' => $orders]);
     }
 
@@ -29,7 +29,7 @@ class PemilikController extends Controller
             'status' =>$request->status,
             'jns_smph' =>$request->jns_smph,
         ]);
-        return redirect("/dashboard/pemilik");
+        return redirect("/dashboard/pemilik")->with('flash_added', 'Data Successfully Added');
     }
     public function profilepengambil()
     {
@@ -43,7 +43,7 @@ class PemilikController extends Controller
     {
         $n = PemilikSampah::find($id);
         $n->delete();
-        return redirect("/dashboard/pemilik");
+        return redirect("/dashboard/pemilik")->with('flash_deleted', 'Data Successfully Deleted');
     }
 
     public function update($id,Request $request)
@@ -55,7 +55,7 @@ class PemilikController extends Controller
         $n->jns_smph = $request->jns_smph;
         $n -> save();
 
-        return redirect("/dashboard/pemilik");
+        return redirect("/dashboard/pemilik")->with('flash_edited', 'Data Successfully Edited');
     }
 
     public function formedit($id)

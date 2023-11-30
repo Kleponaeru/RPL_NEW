@@ -53,10 +53,10 @@ Route::middleware(['guest'])->group(function () {
         // });
         // Route::middleware(['CekRole:Bank'])->group(function () {
             Route::get('/dashboard/bank', [BankController::class, 'Bank']);
+            Route::put('/status/confirm/bank/{id}', [BankController::class, 'updatestatusBank'])->name('confirm.status.bank');
+            Route::put('/status/change/bank/{id}', [BankController::class, 'updatestatusBank'])->name('change.status.bank');
             
         // });
-//logout
-Route::get('/logout', [authController::class, 'logout']);
-//     });
-// });
+        //logout
+        Route::get('/logout', [authController::class, 'logout']);
 
