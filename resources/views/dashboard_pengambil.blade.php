@@ -418,12 +418,17 @@
                                                                 <td>{{ $n->jns_smph }}</td>
                                                                 <td>{{ $n->status }}</td>
                                                                 <td>
-                                                                    <a href="/pengambil/formedit/{{ $n->id }}"
-                                                                        class="btn btn-success"><i
-                                                                            class="bi bi-pencil-square"></i></a>
-                                                                    <a href="/pengambil/delete/{{ $n->id }}"
-                                                                        class="btn btn-danger"><i
-                                                                            class="bi bi-trash-fill"></i></a>
+                                                                    <form method="GET" action="/pemilik/formedit/{{ $n->id }}" style="display: inline-block;">
+                                                                        <button type="submit" class="btn btn-success" {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
+                                                                            <i class="bi bi-pencil-square"></i>
+                                                                        </button>
+                                                                    </form>
+            
+                                                                    <form method="GET" action="/pemilik/delete/{{ $n->id }}" style="display: inline-block;">
+                                                                        <button type="submit" class="btn btn-danger" {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
+                                                                            <i class="bi bi-trash-fill"></i>
+                                                                        </button>
+                                                                    </form>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
