@@ -9,17 +9,17 @@ use App\Models\User;
 
 class PemilikController extends Controller
 {
-    
+
 
     public function Pemilik()
     {
         $orders = PemilikSampah::orderBy('id', 'desc')->paginate(5);
         return view('dashboard_pemilik', ['orders' => $orders]);
     }
-    
+
     public function formPesanan()
     {
-        return view('pesanan_pemilik'); 
+        return view('pesanan_pemilik');
     }
     public function postPesanan(Request $request)
     {
@@ -38,4 +38,29 @@ class PemilikController extends Controller
         $result = User::where('username', $username)->first();
         return view('profile_pemilik', ['result' => $result, 'user'=>$user]);
     }
+
+    public function delete($id)
+    {
+        $n = PemilikSampah::find($id);
+        $n->delete();
+        return redirect("/dashboard/pemilik");
+    }
+
+    public function update($id,Request $request)
+    {
+        $n = PemilikSampah::find($id);
+        $n->kg_sampah = $request->kg_sampah;
+        $n->jam = $request->jam;
+        $n->status = $request->status;
+        $n -> save();
+
+        return redirect("/dashboard/pemilik");
+    }
+
+    public function formedit($id)
+    {
+        $n = PemilikSampah::find($id);
+        return view('editpesanan_pemilik', ['n'=>$n]);
+    }
+
 }

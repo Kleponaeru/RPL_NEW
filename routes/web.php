@@ -37,6 +37,10 @@ Route::middleware(['guest'])->group(function () {
             Route::get('/profile/pemilik', [PemilikController::class, 'profilepemilik']);
             Route::get('/pemilik/buang', [PemilikController::class, 'formPesanan']);
             Route::post('/pemilik/postpesanan', [PemilikController::class, 'postPesanan']);
+            Route::get('/pemilik/delete/{id}', [PemilikController::class, 'delete']);
+            Route::get('/pemilik/formedit/{id}', [PemilikController::class, 'formedit']);
+            Route::PUT('/pemilik/update/{id}', [PemilikController::class, 'update']);
+
         // });
         // Route::middleware(['CekRole:Bank'])->group(function () {
             Route::get('/dashboard/bank', [PageController::class, 'dashboardBank']);
