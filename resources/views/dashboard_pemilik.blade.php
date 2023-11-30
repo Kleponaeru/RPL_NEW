@@ -185,9 +185,8 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        <i class="icon-grid menu-icon"></i>
-                        <span class="menu-title">Dashboard</span>
+                    <a class="nav-link" href="#">
+                        <span class="menu-title"><i class="bi bi-house-door-fill"></i> Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -198,34 +197,6 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
-                        aria-controls="charts">
-                        <i class="icon-bar-graph menu-icon"></i>
-                        <span class="menu-title">Charts</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="charts">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
-                        aria-controls="tables">
-                        <i class="icon-grid-2 menu-icon"></i>
-                        <span class="menu-title">Tables</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="tables">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic
-                                    table</a></li>
                         </ul>
                     </div>
                 </li>
@@ -303,11 +274,8 @@
             <!-- partial:partials/_footer.html -->
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.
-                        Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a>
-                        from BootstrapDash. All rights reserved.</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
-                        <i class="ti-heart text-danger ml-1"></i></span>
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023.
+                        LUNA
                 </div>
             </footer>
             <!-- partial -->
