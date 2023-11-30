@@ -7,9 +7,9 @@
                 <div class="col-md-6 mt-3">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/pemilik/postpesanan" method="POST">
+                            <form action="/pengambil/postpesanan" method="POST">
                                 @csrf
-                                <h2 class="mb-4 fs-4 fw-bold text-center">Buat Pesanan Sampah</h2>
+                                <h2 class="mb-4 fs-4 fw-bold text-center">Buat Pesanan Bank Sampah</h2>
 
                                 <div class="mb-3 row align-items-center">
                                     <label for="berat" class="col-sm-4 col-form-label">Berat Sampah (kg)</label>

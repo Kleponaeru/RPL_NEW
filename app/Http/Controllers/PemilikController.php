@@ -52,6 +52,7 @@ class PemilikController extends Controller
         $n->kg_sampah = $request->kg_sampah;
         $n->jam = $request->jam;
         $n->status = $request->status;
+        $n->jns_smph = $request->jns_smph;
         $n -> save();
 
         return redirect("/dashboard/pemilik");

@@ -185,9 +185,8 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        <i class="icon-grid menu-icon"></i>
-                        <span class="menu-title">Dashboard</span>
+                    <a class="nav-link" href="#">
+                        <span class="menu-title"><i class="bi bi-house-door-fill"></i> Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -201,34 +200,12 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
-                        aria-controls="charts">
-                        <i class="icon-bar-graph menu-icon"></i>
-                        <span class="menu-title">Charts</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="charts">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
-                        aria-controls="tables">
-                        <i class="icon-grid-2 menu-icon"></i>
-                        <span class="menu-title">Tables</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="tables">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic
-                                    table</a></li>
-                        </ul>
-                    </div>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="/pengambil/buang" aria-expanded="false"
+                            aria-controls="charts">
+                            <span class="menu-title"><i class="bi bi-archive-fill"></i> Buang Sampah</span>
+                        </a>
+                    
                 <li class="nav-item">
                     <a class="dropdown-item border-top" href="/logout"><i class="bi bi-box-arrow-right"></i> Log
                         Out</a>
@@ -256,7 +233,7 @@
                       <div class="card">
                           <div class="card-body">
                               <div class="d-flex justify-content-between align-items-center mb-3">
-                                  <p class="card-title">Tabel Pesanan</p>
+                                  <p class="card-title">Tabel Pesanan (Pemilik)</p>
                               </div>
                               <div class="row">
                                   <div class="col-12">
@@ -291,20 +268,63 @@
                                       </div>
                                   </div>
                               </div>
+
+                              
                           </div>
                       </div>
                   </div>
-              </div>              
+              </div>   
+              <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <p class="card-title">Tabel Pembuangan (Bank Sampah)</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table id="example" class="display expandable-table" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Berat Sampah (kg)</th>
+                                                    <th>Jam Pengambilan</th>
+                                                    <th>Jenis Sampah</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                              @foreach ($orders_pengambil as $idx => $n)
+                                              <tr>
+                                                  <th scope="row">{{ $orders_pengambil->firstItem() + $idx }}</th>
+                                                  <td>{{ $n->kg_sampah }}</td>
+                                                  <td>{{ $n->jam }}</td>
+                                                  <td>{{ $n->jns_smph }}</td>
+                                                  <td>{{ $n->status }}</td>
+                                                  <td>
+                                                    <a href="/pengambil/formedit/{{ $n->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                                    <a href="/pengambil/delete/{{ $n->id }}" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+                                                  </td>
+                                              </tr>
+                                          @endforeach                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>             
             </div>
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.
-                        Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a>
-                        from BootstrapDash. All rights reserved.</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
-                        <i class="ti-heart text-danger ml-1"></i></span>
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023.
+                       LUNA
                 </div>
             </footer>
             <!-- partial -->
