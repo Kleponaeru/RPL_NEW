@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <!-- Required meta tags -->
+<hea  <    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bank Sampah</title>
@@ -233,6 +232,83 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
+                                      @if (session('flash_added'))
+                                                <div class="alert alert-success alert-dismissible fade show"
+                                                    role="alert" id="alert">
+                                                    <strong>{{ session('flash_added') }}</strong>
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <!-- Automatic dismissal using JavaScript -->
+                                                <script type="text/javascript">
+                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                        setTimeout(function() {
+                                                            var alert = document.getElementById('alert');
+                                                            alert.parentNode.removeChild(alert);
+                                                        }, 3500);
+                                                    });
+                                                </script>
+                                                 @elseif (session('flash_edited'))
+                                                 <div class="alert alert-warning alert-dismissible fade show"
+                                                     role="alert" id="alert">
+                                                     <strong>{{ session('flash_edited') }}</strong>
+                                                     <button type="button" class="close" data-dismiss="alert"
+                                                         aria-label="Close">
+                                                         <span aria-hidden="true">&times;</span>
+                                                     </button>
+                                                 </div>
+
+                                                 <!-- Automatic dismissal using JavaScript -->
+                                                 <script type="text/javascript">
+                                                     document.addEventListener('DOMContentLoaded', function() {
+                                                         setTimeout(function() {
+                                                             var alert = document.getElementById('alert');
+                                                             alert.parentNode.removeChild(alert);
+                                                         }, 3500);
+                                                     });
+                                                 </script>
+                                                 @elseif (session('flash_deleted'))
+                                                 <div class="alert alert-danger alert-dismissible fade show"
+                                                     role="alert" id="alert">
+                                                     <strong>{{ session('flash_deleted') }}</strong>
+                                                     <button type="button" class="close" data-dismiss="alert"
+                                                         aria-label="Close">
+                                                         <span aria-hidden="true">&times;</span>
+                                                     </button>
+                                                 </div>
+
+                                                 <!-- Automatic dismissal using JavaScript -->
+                                                 <script type="text/javascript">
+                                                     document.addEventListener('DOMContentLoaded', function() {
+                                                         setTimeout(function() {
+                                                             var alert = document.getElementById('alert');
+                                                             alert.parentNode.removeChild(alert);
+                                                         }, 3500);
+                                                     });
+                                                 </script>
+                                                  @elseif (session('flash_status'))
+                                                  <div class="alert alert-info alert-dismissible fade show"
+                                                      role="alert" id="alert">
+                                                      <strong>{{ session('flash_status') }}</strong>
+                                                      <button type="button" class="close" data-dismiss="alert"
+                                                          aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                  </div>
+ 
+                                                  <!-- Automatic dismissal using JavaScript -->
+                                                  <script type="text/javascript">
+                                                      document.addEventListener('DOMContentLoaded', function() {
+                                                          setTimeout(function() {
+                                                              var alert = document.getElementById('alert');
+                                                              alert.parentNode.removeChild(alert);
+                                                          }, 3500);
+                                                      });
+                                                  </script>
+                                            @endif
                                         <table id="example" class="display expandable-table" style="width:100%">
                                             <thead>
                                                 <tr>
@@ -253,8 +329,35 @@
                                                   <td>{{ $n->jns_smph }}</td>
                                                   <td>{{ $n->status }}</td>
                                                   <td>
-                                                    <a href="{{ $n->id }}" class="btn btn-success"><i class="bi bi-check-circle-fill"></i></a>
-                                                    <a href="{{ $n->id }}" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i></a>
+                                                    <form method="POST"
+                                                    action="{{ route('confirm.status.bank', ['id' => $n->id]) }}"
+                                                    style="display: inline-block;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status"
+                                                        value="Diterima">
+                                                    <button type="submit" class="btn btn-success"
+                                                        onclick="return confirm('Are you sure you want to confirm this?')">
+                                                        <i class="bi bi-check-circle-fill"></i>
+                                                    </button>
+                                                </form>
+
+
+                                                <!-- Your Blade View File -->
+
+                                                <form method="POST"
+                                                    action="{{ url('/status/change/bank/' . $n->id) }}"
+                                                    style="display: inline-block;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status"
+                                                        value="Ditolak">
+                                                    <button type="submit" class="btn btn-danger"
+                                                        onclick="return confirm('Are you sure you want to reject this?')">
+                                                        <i class="bi bi-x-circle-fill"></i>
+                                                    </button>
+                                                    
+                                                </form>
                                                   </td>
                                               </tr>
                                           @endforeach                                            
@@ -299,6 +402,26 @@
     <script src="js/hoverable-collapse.js"></script>
     <script src="js/template.js"></script>
     <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+</body>
+
+</html>
+cript src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+</body>
+
+</html>
+cript src="js/settings.js"></script>
     <script src="js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->

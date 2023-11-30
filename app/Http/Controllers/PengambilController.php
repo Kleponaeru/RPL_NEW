@@ -10,8 +10,8 @@ class PengambilController extends Controller
 {
     public function Pengambil()
     {
-        $orders = PemilikSampah::orderBy('id', 'desc')->paginate(5);
-        $orders_pengambil = PengambilSampah::orderBy('id', 'desc')->paginate(5);
+        $orders = PemilikSampah::orderBy('id', 'desc')->paginate(15);
+        $orders_pengambil = PengambilSampah::orderBy('id', 'desc')->paginate(15);
         return view('dashboard_pengambil', ['orders' => $orders], ['orders_pengambil' => $orders_pengambil]);
     }
     public function formPesanan()
@@ -26,13 +26,13 @@ class PengambilController extends Controller
             'status' =>$request->status,
             'jns_smph' =>$request->jns_smph,
         ]);
-        return redirect("/dashboard/pengambil");
+        return redirect("/dashboard/pengambil")->with('flash_added', 'Data Successfully Added');;
     }
     public function delete($id)
     {
         $n = PengambilSampah::find($id);
         $n->delete();
-        return redirect("/dashboard/pengambil");
+        return redirect("/dashboard/pengambil")->with('flash_deleted', 'Data Successfully Deleted');
     }
 
     public function update($id,Request $request)
@@ -44,7 +44,7 @@ class PengambilController extends Controller
         $n->jns_smph = $request->jns_smph;
         $n -> save();
 
-        return redirect("/dashboard/pengambil");
+        return redirect("/dashboard/pengambil")->with('flash_edited', 'Data Successfully Edited');
     }
 
     public function formedit($id)
@@ -59,6 +59,6 @@ class PengambilController extends Controller
         // Update your model or database table with the new status value
         PemilikSampah::where('id', $id)->update(['status' => $statusValue]);
 
-        return redirect('/dashboard/pengambil');
+        return redirect('/dashboard/pengambil')->with('flash_status', 'Status Successfully Updated');
     }
 }
