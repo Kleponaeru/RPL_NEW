@@ -257,9 +257,6 @@
                           <div class="card-body">
                               <div class="d-flex justify-content-between align-items-center mb-3">
                                   <p class="card-title">Tabel Pesanan</p>
-                                  <a class="btn btn-primary" href="/pemilik/buang" role="button">
-                                    <i class="bi bi-plus-circle-fill"></i> Buat Pesanan 
-                                  </a>
                               </div>
                               <div class="row">
                                   <div class="col-12">
@@ -268,8 +265,9 @@
                                               <thead>
                                                   <tr>
                                                       <th>No</th>
-                                                      <th>Berat Sampah</th>
+                                                      <th>Berat Sampah (kg)</th>
                                                       <th>Jam Pengambilan</th>
+                                                      <th>Jenis Sampah</th>
                                                       <th>Status</th>
                                                       <th>Action</th>
                                                   </tr>
@@ -280,6 +278,7 @@
                                                     <th scope="row">{{ $orders->firstItem() + $idx }}</th>
                                                     <td>{{ $n->kg_sampah }}</td>
                                                     <td>{{ $n->jam }}</td>
+                                                    <td>{{ $n->jns_smph }}</td>
                                                     <td>{{ $n->status }}</td>
                                                     <td>
                                                         <a href="{{ $n->id }}" class="btn btn-success"><i class="bi bi-check-circle-fill"></i></a>

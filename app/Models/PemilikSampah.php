@@ -14,5 +14,6 @@ class PemilikSampah extends Model
         'kg_sampah',
         'jam',
         'status',
+        'jns_smph',
     ];
 }
