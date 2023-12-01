@@ -31,13 +31,13 @@ class PemilikController extends Controller
         ]);
         return redirect("/dashboard/pemilik")->with('flash_added', 'Data Successfully Added');
     }
-    public function profilepengambil()
-    {
-        $username = Auth::User()->username ?? '';
-        $user = Auth::User()->username ?? '';
-        $result = User::where('username', $username)->first();
-        return view('profile_pemilik', ['result' => $result, 'user'=>$user]);
-    }
+    // public function profilepengambil()
+    // {
+    //     $username = Auth::User()->username ?? '';
+    //     $user = Auth::User()->username ?? '';
+    //     $result = User::where('username', $username)->first();
+    //     return view('profile_pemilik', ['result' => $result, 'user'=>$user]);
+    // }
 
     public function delete($id)
     {
@@ -62,6 +62,11 @@ class PemilikController extends Controller
     {
         $n = PemilikSampah::find($id);
         return view('editpesanan_pemilik', ['n'=>$n]);
+    }
+
+    public function profilepemilik(){
+        // $n = User::find($id_user);
+        return view('profile_pemilik');
     }
 
 }
