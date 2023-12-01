@@ -269,7 +269,7 @@
                                                              <span aria-hidden="true">&times;</span>
                                                          </button>
                                                      </div>
- 
+
                                                      <!-- Automatic dismissal using JavaScript -->
                                                      <script type="text/javascript">
                                                          document.addEventListener('DOMContentLoaded', function() {
@@ -288,7 +288,7 @@
                                                              <span aria-hidden="true">&times;</span>
                                                          </button>
                                                      </div>
- 
+
                                                      <!-- Automatic dismissal using JavaScript -->
                                                      <script type="text/javascript">
                                                          document.addEventListener('DOMContentLoaded', function() {
@@ -327,7 +327,7 @@
                                                                             <i class="bi bi-pencil-square"></i>
                                                                         </button>
                                                                     </form>
-            
+
                                                                     <form method="GET" action="/pemilik/delete/{{ $n->id }}" style="display: inline-block;">
                                                                         <button type="submit" class="btn btn-danger" {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
                                                                             <i class="bi bi-trash-fill"></i>
@@ -337,8 +337,8 @@
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
-                                                </table>  
-                                            </div> 
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
