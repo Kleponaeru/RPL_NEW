@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PemilikSampah;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -11,10 +12,12 @@ class PageController extends Controller
     {
         return view("home");
     }
-    // public function login()
-    // {
-    //     return view("login");
-    // }
+    public function grafik()
+    {
+        $orders = PemilikSampah::orderBy('id', 'desc')->paginate(15);
+        return view('grafik', ['orders' => $orders]);
+    }
+
     public function register()
     {
         return view("register");
