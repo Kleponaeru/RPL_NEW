@@ -206,6 +206,17 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="/grafik" aria-expanded="false"
+                            aria-controls="ui-basic">
+
+                            <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i></i> Luaran</span>
+                        </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column sub-menu">
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <a class="dropdown-item border-top" href="/logout"><i class="bi bi-box-arrow-right"></i> Log
                             Out</a>
                         <i class="icon-paper menu-icon"></i>
@@ -260,44 +271,44 @@
                                                             }, 3500);
                                                         });
                                                     </script>
-                                                     @elseif (session('flash_edited'))
-                                                     <div class="alert alert-warning alert-dismissible fade show"
-                                                         role="alert" id="alert">
-                                                         <strong>{{ session('flash_edited') }}</strong>
-                                                         <button type="button" class="close" data-dismiss="alert"
-                                                             aria-label="Close">
-                                                             <span aria-hidden="true">&times;</span>
-                                                         </button>
-                                                     </div>
+                                                @elseif (session('flash_edited'))
+                                                    <div class="alert alert-warning alert-dismissible fade show"
+                                                        role="alert" id="alert">
+                                                        <strong>{{ session('flash_edited') }}</strong>
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
 
-                                                     <!-- Automatic dismissal using JavaScript -->
-                                                     <script type="text/javascript">
-                                                         document.addEventListener('DOMContentLoaded', function() {
-                                                             setTimeout(function() {
-                                                                 var alert = document.getElementById('alert');
-                                                                 alert.parentNode.removeChild(alert);
-                                                             }, 3500);
-                                                         });
-                                                     </script>
-                                                     @elseif (session('flash_deleted'))
-                                                     <div class="alert alert-danger alert-dismissible fade show"
-                                                         role="alert" id="alert">
-                                                         <strong>{{ session('flash_deleted') }}</strong>
-                                                         <button type="button" class="close" data-dismiss="alert"
-                                                             aria-label="Close">
-                                                             <span aria-hidden="true">&times;</span>
-                                                         </button>
-                                                     </div>
+                                                    <!-- Automatic dismissal using JavaScript -->
+                                                    <script type="text/javascript">
+                                                        document.addEventListener('DOMContentLoaded', function() {
+                                                            setTimeout(function() {
+                                                                var alert = document.getElementById('alert');
+                                                                alert.parentNode.removeChild(alert);
+                                                            }, 3500);
+                                                        });
+                                                    </script>
+                                                @elseif (session('flash_deleted'))
+                                                    <div class="alert alert-danger alert-dismissible fade show"
+                                                        role="alert" id="alert">
+                                                        <strong>{{ session('flash_deleted') }}</strong>
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
 
-                                                     <!-- Automatic dismissal using JavaScript -->
-                                                     <script type="text/javascript">
-                                                         document.addEventListener('DOMContentLoaded', function() {
-                                                             setTimeout(function() {
-                                                                 var alert = document.getElementById('alert');
-                                                                 alert.parentNode.removeChild(alert);
-                                                             }, 3500);
-                                                         });
-                                                     </script>
+                                                    <!-- Automatic dismissal using JavaScript -->
+                                                    <script type="text/javascript">
+                                                        document.addEventListener('DOMContentLoaded', function() {
+                                                            setTimeout(function() {
+                                                                var alert = document.getElementById('alert');
+                                                                alert.parentNode.removeChild(alert);
+                                                            }, 3500);
+                                                        });
+                                                    </script>
                                                 @endif
 
                                                 <table id="example" class="display expandable-table"
@@ -326,14 +337,20 @@
                                                                 <td>{{ $n->status }}</td>
                                                                 <td>{{ $n->pengambilan }}</td>
                                                                 <td>
-                                                                    <form method="GET" action="/pemilik/formedit/{{ $n->id }}" style="display: inline-block;">
-                                                                        <button type="submit" class="btn btn-success" {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
+                                                                    <form method="GET"
+                                                                        action="/pemilik/formedit/{{ $n->id }}"
+                                                                        style="display: inline-block;">
+                                                                        <button type="submit" class="btn btn-success"
+                                                                            {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
                                                                             <i class="bi bi-pencil-square"></i>
                                                                         </button>
                                                                     </form>
 
-                                                                    <form method="GET" action="/pemilik/delete/{{ $n->id }}" style="display: inline-block;">
-                                                                        <button type="submit" class="btn btn-danger" {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
+                                                                    <form method="GET"
+                                                                        action="/pemilik/delete/{{ $n->id }}"
+                                                                        style="display: inline-block;">
+                                                                        <button type="submit" class="btn btn-danger"
+                                                                            {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
                                                                             <i class="bi bi-trash-fill"></i>
                                                                         </button>
                                                                     </form>
