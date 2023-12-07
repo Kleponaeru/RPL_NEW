@@ -33,8 +33,6 @@
         }
     </style>
 
-    <!-- Your existing Chart.js script -->
-
     <script>
         // Initial data
         var organikData = {!! json_encode($orders->where('jns_smph', 'Organik')->pluck('kg_sampah')) !!};
@@ -54,8 +52,7 @@
                 labels: ['Organik', 'Anorganik'],
                 datasets: [{
                     label: 'Berat Sampah',
-                    data: [organikData.reduce((a, b) => a + b, 0), anorganikData.reduce((a, b) => a + b,
-                        0)],
+                    data: [calculateTotal(organikData), calculateTotal(anorganikData)],
                     backgroundColor: [organikColor, anorganikColor],
                     borderWidth: 0,
                     borderColor: 'rgba(0, 0, 0, 0)' // Set borderColor to fully transparent
@@ -79,10 +76,7 @@
             var newAnorganikData = [ /* your new anorganik data array */ ];
 
             // Update the chart data
-            myChart.data.datasets[0].data = [
-                newOrganikData.reduce((a, b) => a + b, 0),
-                newAnorganikData.reduce((a, b) => a + b, 0)
-            ];
+            myChart.data.datasets[0].data = [calculateTotal(newOrganikData), calculateTotal(newAnorganikData)];
 
             // Update the chart
             myChart.update();
@@ -94,6 +88,11 @@
         // Function to go back
         function goBack() {
             window.history.back();
+        }
+
+        // Function to calculate the total from an array of values
+        function calculateTotal(dataArray) {
+            return dataArray.reduce((a, b) => a + b, 0);
         }
     </script>
 

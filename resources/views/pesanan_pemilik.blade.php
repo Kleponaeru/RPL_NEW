@@ -26,6 +26,7 @@
                                             <option selected disabled>Pilih Jenis Sampah</option>
                                             <option value="Organik">Sampah Basah (Organik)</option>
                                             <option value="Anorganik">Sampah Padat (Anorganik)</option>
+                                            <option value="Berbahaya">Sampah Berbahaya (Berbahaya)</option>
                                         </select>
                                     </div>
                                 </div>
