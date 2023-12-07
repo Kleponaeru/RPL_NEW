@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PemilikSampah extends Model
+class BankSampah extends Model
 {
     protected $table = 'orders';
     protected $fillable = [
@@ -17,8 +17,4 @@ class PemilikSampah extends Model
         'pengambilan',
         'jns_smph',
     ];
-    public function location()
-    {
-        return $this->belongsTo(Location::class, 'id_location', 'id_location');
-    }
 }

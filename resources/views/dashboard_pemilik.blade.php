@@ -305,10 +305,12 @@
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
+                                                            <th>Bank Sampah</th>
                                                             <th>Berat Sampah</th>
                                                             <th>Jam Pengambilan</th>
                                                             <th>Jenis</th>
                                                             <th>Status</th>
+                                                            <th>Pengambilan</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
@@ -317,9 +319,11 @@
                                                             <tr>
                                                                 <th scope="row">{{ $orders->firstItem() + $idx }}
                                                                 </th>
+                                                                <td>{{ optional($n->location)->nama_location }}</td>
                                                                 <td>{{ $n->kg_sampah }}</td>
                                                                 <td>{{ $n->jam }}</td>
                                                                 <td>{{ $n->jns_smph }}</td>
+                                                                <td>{{ $n->pengambilan }}</td>
                                                                 <td>{{ $n->status }}</td>
                                                                 <td>
                                                                     <form method="GET" action="/pemilik/formedit/{{ $n->id }}" style="display: inline-block;">

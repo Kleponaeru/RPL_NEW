@@ -205,11 +205,11 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="/pengambil/buang" aria-expanded="false"
                             aria-controls="charts">
                             <span class="menu-title"><i class="bi bi-archive-fill"></i> Buang Sampah</span>
-                        </a>
+                        </a> --}}
 
                     <li class="nav-item">
                         <a class="dropdown-item border-top" href="/logout"><i class="bi bi-box-arrow-right"></i> Log

@@ -29,6 +29,17 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="mb-3 row align-items-center">
+                                    <label for="id_location" class="col-sm-4 col-form-label">Bank Sampah</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-select" aria-label="Bank Sampah" name="id_location">
+                                            <option selected disabled>Pilih Bank Sampah</option>
+                                            <option value=1>TPA 1</option>
+                                            <option value=2>TPA 2</option>
+                                            <option value=3>TPA 3</option>
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <div class="mb-3 row align-items-center">
                                     <label for="jenis" class="col-sm-4 col-form-label">Pilih Jam</label>
@@ -61,6 +72,7 @@
                                 </div>
 
                                 <input type="hidden" name="status" value="Process">
+                                <input type="hidden" name="pengambilan" value="Belum diambil">
 
                                 <div class="col-md-12 text-center mb-4">
                                     <button type="submit" class="btn btn-primary btn-lg px-4">

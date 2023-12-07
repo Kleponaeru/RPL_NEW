@@ -24,10 +24,12 @@ class PemilikController extends Controller
     public function postPesanan(Request $request)
     {
         PemilikSampah::create([
+            'id_location' => $request-> id_location,
             'kg_sampah'=>$request->kg_sampah,
             'jam'=>$request->jam,
             'status' =>$request->status,
             'jns_smph' =>$request->jns_smph,
+            'pengambilan' =>$request->pengambilan,
         ]);
         return redirect("/dashboard/pemilik")->with('flash_added', 'Data Successfully Added');
     }

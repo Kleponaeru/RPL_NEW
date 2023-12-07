@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankSampah;
 use App\Models\PengambilSampah;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class BankController extends Controller
 {
     public function Bank()
     {
-        $orders_pengambil = PengambilSampah::orderBy('id', 'desc')->paginate(15);
+        $orders_pengambil = BankSampah::orderBy('id', 'desc')->paginate(15);
         return view('dashboard_bank', ['orders_pengambil' => $orders_pengambil]);
     }
     public function updatestatusBank($id, Request $request)
