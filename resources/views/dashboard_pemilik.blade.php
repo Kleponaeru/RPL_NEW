@@ -46,20 +46,6 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="icon-menu"></span>
                 </button>
-                <ul class="navbar-nav mr-lg-2">
-                    <li class="nav-item nav-search d-none d-lg-block">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="navbar-search-input"
-                                placeholder="Search here..." aria-label="search" aria-describedby="search">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">
-                                    <i class="bi bi-search"></i> Search
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-
-                </ul>
                 <a class="btn btn-primary" href="/profile/pemilik" role="button">Profile <i
                         class="bi bi-person-fill"></i></a>
 
@@ -232,8 +218,7 @@
                             <div class="row">
                                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                                     <h3 class="font-weight-bold">Welcome! {{ Auth::user()->user ?? '' }}</h3>
-                                    <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have
-                                        <span class="text-primary">3 unread alerts!</span>
+                                    <h6 class="font-weight-normal mb-0">Kamu dapat melihat pesananmu di halaman ini!
                                     </h6>
                                 </div>
                             </div>
@@ -244,9 +229,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <p class="card-title">Tabel Pesanan</p>
+                                        <p class="card-title">Apa saja pesananmu?</p>
                                         <a class="btn btn-primary" href="/pemilik/buang" role="button">
-                                            <i class="bi bi-plus-circle-fill"></i> Buat Pesanan
+                                            <i class="bi bi-plus-circle-fill"></i>
                                         </a>
                                     </div>
                                     <div class="row">
@@ -311,17 +296,22 @@
                                                     </script>
                                                 @endif
 
+                                                @php
+                                                    $grandTotal = 0;
+                                                @endphp
+
                                                 <table id="example" class="display expandable-table"
                                                     style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
                                                             <th>Bank Sampah</th>
-                                                            <th>Berat Sampah</th>
-                                                            <th>Jam Pengambilan</th>
-                                                            <th>Jenis</th>
+                                                            <th>Berat</th>
+                                                            <th>Pukul</th>
+                                                            <th>Jenis Sampah</th>
                                                             <th>Status</th>
-                                                            <th>Pengambilan</th>
+                                                            <th>Apakah sudah diambil?</th>
+                                                            <th>Harga</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
@@ -331,17 +321,22 @@
                                                                 <th scope="row">{{ $orders->firstItem() + $idx }}
                                                                 </th>
                                                                 <td>{{ optional($n->location)->nama_location }}</td>
-                                                                <td>{{ $n->kg_sampah }}</td>
-                                                                <td>{{ $n->jam }}</td>
+                                                                <td>{{ $n->kg_sampah }} Kg</td>
+                                                                <td>{{ $n->jam }} WIB</td>
                                                                 <td>{{ $n->jns_smph }}</td>
-                                                                <td>{{ $n->status }}</td>
+                                                                <td>
+                                                                    <span
+                                                                        class="badge badge-{{ $n->status === 'Diterima' ? 'success' : 'warning' }}">{{ $n->status }}</span>
+                                                                </td>
                                                                 <td>{{ $n->pengambilan }}</td>
+                                                                <td>Rp {{ number_format($n->harga, 0, ',', '.') }}</td>
                                                                 <td>
                                                                     <form method="GET"
                                                                         action="/pemilik/formedit/{{ $n->id }}"
                                                                         style="display: inline-block;">
                                                                         <button type="submit" class="btn btn-success"
-                                                                            {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
+                                                                            {{ $n->status === 'Diterima' ? 'disabled' : '' }}
+                                                                            data-toggle="tooltip" title="Edit">
                                                                             <i class="bi bi-pencil-square"></i>
                                                                         </button>
                                                                     </form>
@@ -354,11 +349,19 @@
                                                                             <i class="bi bi-trash-fill"></i>
                                                                         </button>
                                                                     </form>
+
                                                                 </td>
                                                             </tr>
+                                                            @php
+                                                                $grandTotal += $n->harga;
+                                                            @endphp
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                                <div>
+                                                    <p>Grand Total: Rp {{ number_format($grandTotal, 0, ',', '.') }}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
