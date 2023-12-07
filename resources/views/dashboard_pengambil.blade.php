@@ -238,7 +238,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <p class="card-title">Tabel Pesanan (Pemilik)</p>
+                                        <p class="card-title">Tabel Pesanan</p>
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
@@ -325,110 +325,56 @@
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
+                                                            <th>Bank Sampah</th>
                                                             <th>Berat Sampah (kg)</th>
                                                             <th>Jam Pengambilan</th>
-                                                            <th>Jenis Sampah</th>
+                                                            <th>Jenis</th>
                                                             <th>Status</th>
+                                                            <th>Pengambilan</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($orders as $idx => $n)
-                                                            <tr>
-                                                                <th scope="row">{{ $orders->firstItem() + $idx }}
-                                                                </th>
-                                                                <td>{{ $n->kg_sampah }}</td>
-                                                                <td>{{ $n->jam }}</td>
-                                                                <td>{{ $n->jns_smph }}</td>
-                                                                <td>{{ $n->status }}</td>
-                                                                <td>
-
-                                                                    <form method="POST"
-                                                                        action="{{ route('confirm.status', ['id' => $n->id]) }}"
-                                                                        style="display: inline-block;">
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                        <input type="hidden" name="status"
-                                                                            value="Diterima">
-                                                                        <button type="submit" class="btn btn-success"
-                                                                            onclick="return confirm('Are you sure you want to confirm this?')">
-                                                                            <i class="bi bi-check-circle-fill"></i>
-                                                                        </button>
-                                                                    </form>
-
-
-                                                                    <!-- Your Blade View File -->
-
-                                                                    <form method="POST"
-                                                                        action="{{ url('/status/change/' . $n->id) }}"
-                                                                        style="display: inline-block;">
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                        <input type="hidden" name="status"
-                                                                            value="Ditolak">
-                                                                        <button type="submit" class="btn btn-danger"
-                                                                            onclick="return confirm('Are you sure you want to reject this?')">
-                                                                            <i class="bi bi-x-circle-fill"></i>
-                                                                        </button>
-                                                                        
-                                                                    </form>
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <p class="card-title">Tabel Pembuangan (Bank Sampah)</p>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="table-responsive">
-                                                <table id="example" class="display expandable-table"
-                                                    style="width:100%">
-                                                    <thead>
                                                         <tr>
-                                                            <th>No</th>
-                                                            <th>Berat Sampah (kg)</th>
-                                                            <th>Jam Pengambilan</th>
-                                                            <th>Jenis Sampah</th>
-                                                            <th>Status</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($orders_pengambil as $idx => $n)
-                                                            <tr>
-                                                                <th scope="row">
-                                                                    {{ $orders_pengambil->firstItem() + $idx }}</th>
-                                                                <td>{{ $n->kg_sampah }}</td>
-                                                                <td>{{ $n->jam }}</td>
-                                                                <td>{{ $n->jns_smph }}</td>
-                                                                <td>{{ $n->status }}</td>
-                                                                <td>
-                                                                    <form method="GET" action="/pemilik/formedit/{{ $n->id }}" style="display: inline-block;">
-                                                                        <button type="submit" class="btn btn-success" {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
-                                                                            <i class="bi bi-pencil-square"></i>
-                                                                        </button>
-                                                                    </form>
-            
-                                                                    <form method="GET" action="/pemilik/delete/{{ $n->id }}" style="display: inline-block;">
-                                                                        <button type="submit" class="btn btn-danger" {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
-                                                                            <i class="bi bi-trash-fill"></i>
-                                                                        </button>
-                                                                    </form>
+                                                            <th scope="row">{{ $orders->firstItem() + $idx }}
+                                                            </th>
+                                                            <td>{{ optional($n->location)->nama_location }}</td>
+                                                            <td>{{ $n->kg_sampah }}</td>
+                                                            <td>{{ $n->jam }}</td>
+                                                            <td>{{ $n->jns_smph }}</td>
+                                                            <td>{{ $n->status }}</td>
+                                                            <td>{{ $n->pengambilan }}</td>
+                                                            <td>
+
+                                                                <form method="POST"
+                                                                action="{{ route('confirm.status', ['id' => $n->id]) }}"
+                                                                style="display: inline-block;"
+                                                                @if ($n->status == 'Ditolak' || $n->status == 'Process') disabled @endif>
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="pengambilan" value="Sudah diambil">
+                                                                <button type="submit" class="btn btn-success"
+                                                                    onclick="return confirm('Are you sure you want to confirm this?')"
+                                                                    @if ($n->status == 'Ditolak' || $n->status == 'Process') disabled @endif>
+                                                                    <i class="bi bi-check-circle-fill"></i>
+                                                                </button>
+                                                            </form>
+                                                            
+                                                            <form method="POST"
+                                                                action="{{ url('/status/change/' . $n->id) }}"
+                                                                style="display: inline-block;"
+                                                                @if ($n->status == 'Ditolak' || $n->status == 'Process') disabled @endif>
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="pengambilan" value="Tidak bisa diambil">
+                                                                <button type="submit" class="btn btn-danger"
+                                                                    onclick="return confirm('Are you sure you want to reject this?')"
+                                                                    @if ($n->status == 'Ditolak' || $n->status == 'Process') disabled @endif>
+                                                                    <i class="bi bi-x-circle-fill"></i>
+                                                                </button>
+                                                            </form>
+                                                            
                                                                 </td>
                                                             </tr>
                                                         @endforeach
@@ -437,6 +383,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </div>
                             </div>
                         </div>

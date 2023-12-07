@@ -17,4 +17,8 @@ class BankSampah extends Model
         'pengambilan',
         'jns_smph',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_location', 'id_location');
+    }
 }

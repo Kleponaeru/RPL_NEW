@@ -11,7 +11,7 @@ class PengambilController extends Controller
     public function Pengambil()
     {
         $orders = PemilikSampah::orderBy('id', 'desc')->paginate(15);
-        $orders_pengambil = PengambilSampah::orderBy('id', 'desc')->paginate(15);
+        $orders_pengambil = PemilikSampah::orderBy('id', 'desc')->paginate(15);
         return view('dashboard_pengambil', ['orders' => $orders], ['orders_pengambil' => $orders_pengambil]);
     }
     public function formPesanan()
@@ -54,10 +54,10 @@ class PengambilController extends Controller
     }
     public function updatestatus($id, Request $request)
     {
-        $statusValue = $request->input('status');
+        $statusValue = $request->input('pengambilan');
 
         // Update your model or database table with the new status value
-        PemilikSampah::where('id', $id)->update(['status' => $statusValue]);
+        PemilikSampah::where('id', $id)->update(['pengambilan' => $statusValue]);
 
         return redirect('/dashboard/pengambil')->with('flash_status', 'Status Successfully Updated');
     }

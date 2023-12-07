@@ -323,8 +323,8 @@
                                                                 <td>{{ $n->kg_sampah }}</td>
                                                                 <td>{{ $n->jam }}</td>
                                                                 <td>{{ $n->jns_smph }}</td>
-                                                                <td>{{ $n->pengambilan }}</td>
                                                                 <td>{{ $n->status }}</td>
+                                                                <td>{{ $n->pengambilan }}</td>
                                                                 <td>
                                                                     <form method="GET" action="/pemilik/formedit/{{ $n->id }}" style="display: inline-block;">
                                                                         <button type="submit" class="btn btn-success" {{ $n->status === 'Diterima' ? 'disabled' : '' }}>

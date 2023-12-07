@@ -23,6 +23,11 @@ class User extends Authenticatable
         'password',
         'role',
     ];
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'id_location', 'id_location');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.
