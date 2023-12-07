@@ -16,6 +16,7 @@ class PemilikSampah extends Model
         'status',
         'pengambilan',
         'jns_smph',
+        'harga',
     ];
     public function location()
     {

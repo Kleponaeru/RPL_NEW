@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-    <!-- Include Chart.js from a CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('style_dash.css') }}">
 </head>
 
-<body>
+<body class="bg-light">
 
     <!-- Back button -->
     <button onclick="goBack()">Go Back</button>
@@ -33,10 +34,16 @@
         }
     </style>
 
+    <!-- Your existing Chart.js script -->
+
     <script>
         // Initial data
-        var organikData = {!! json_encode($orders->where('jns_smph', 'Organik')->pluck('kg_sampah')) !!};
-        var anorganikData = {!! json_encode($orders->where('jns_smph', 'Anorganik')->pluck('kg_sampah')) !!};
+        var organikData = {!! json_encode($orders->where('jns_smph', 'Organik')->pluck('kg_sampah') ?? []) !!};
+        var anorganikData = {!! json_encode($orders->where('jns_smph', 'Anorganik')->pluck('kg_sampah') ?? []) !!};
+
+        // Check for undefined or null values and replace with 0
+        organikData = organikData.map(value => value || 0);
+        anorganikData = anorganikData.map(value => value || 0);
 
         // Get the canvas element
         var ctx = document.getElementById('OrganikVsAnorganikChartSmall').getContext('2d');
@@ -74,6 +81,10 @@
             // Simulated new data (replace this with your actual logic)
             var newOrganikData = [ /* your new organik data array */ ];
             var newAnorganikData = [ /* your new anorganik data array */ ];
+
+            // Check for undefined or null values and replace with 0
+            newOrganikData = newOrganikData.map(value => value || 0);
+            newAnorganikData = newAnorganikData.map(value => value || 0);
 
             // Update the chart data
             myChart.data.datasets[0].data = [calculateTotal(newOrganikData), calculateTotal(newAnorganikData)];

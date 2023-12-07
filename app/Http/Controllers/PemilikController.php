@@ -30,6 +30,7 @@ class PemilikController extends Controller
             'status' =>$request->status,
             'jns_smph' =>$request->jns_smph,
             'pengambilan' =>$request->pengambilan,
+            'harga' =>$request->harga,
         ]);
         return redirect("/dashboard/pemilik")->with('flash_added', 'Data Successfully Added');
     }
@@ -51,10 +52,12 @@ class PemilikController extends Controller
     public function update($id,Request $request)
     {
         $n = PemilikSampah::find($id);
+        $n->id_location = $request->id_location;
         $n->kg_sampah = $request->kg_sampah;
         $n->jam = $request->jam;
         $n->status = $request->status;
         $n->jns_smph = $request->jns_smph;
+        $n->harga = $request->harga;
         $n -> save();
 
         return redirect("/dashboard/pemilik")->with('flash_edited', 'Data Successfully Edited');
