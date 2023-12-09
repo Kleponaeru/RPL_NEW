@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\charCoba;
 use App\Models\PemilikSampah;
 use App\Models\Riwayat;
 use Illuminate\Http\Request;
@@ -13,11 +14,17 @@ class PageController extends Controller
     {
         return view("home");
     }
-    public function grafik()
-    {
-        $orders = PemilikSampah::orderBy('id', 'desc')->paginate(15);
-        return view('grafik', ['orders' => $orders]);
+    // public function grafik()
+    // {
+    //     $orders = PemilikSampah::orderBy('id', 'desc')->paginate(15);
+    //     return view('charCoba', ['orders' => $orders]);
+    // }
+    public function chart(charCoba $chart){
+        return view("chart",[
+            'chart' => $chart->build()
+        ]);
     }
+
 
     public function register()
     {

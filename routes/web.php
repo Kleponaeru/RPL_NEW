@@ -20,8 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['guest'])->group(function () {
+    Route::get('/chart', [PageController::class, 'chart']);
     Route::get('/riwayat/pemilik', [PemilikController::class, 'riwayat']);
-    Route::get('/grafik', [PageController::class, 'grafik']);
+    // Route::get('/grafik', [PageController::class, 'grafik']);
     Route::get('/locations', [LocationController::class, 'index']);
     Route::get('/', [PageController::class, 'home']);
     Route::get('/login', [AuthController::class, 'login'])->name('login');
