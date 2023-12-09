@@ -37,9 +37,9 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo mr-5" href="index.html"><img
+                <a class="navbar-brand brand-logo mr-5" href="/dashboard/pemilik"><img
                         src="{{ asset('images/luna-icon.svg') }}" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg"
+                <a class="navbar-brand brand-logo-mini" href="/dashboard/pemilik"><img src="images/logo-mini.svg"
                         alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -203,7 +203,7 @@
                                                                 <td>{{ $n->jns_smph }}</td>
                                                                 <td>
                                                                     <span
-                                                                        class="badge 
+                                                                        class="badge
                                                                         @if ($n->status === 'Diterima') badge-success
                                                                         @elseif($n->status === 'Process')
                                                                             badge-warning
@@ -226,14 +226,32 @@
                                                                         </button>
                                                                     </form>
 
-                                                                    <form method="GET"
+                                                                    <form id="deleteForm_{{ $n->id }}"
+                                                                        method="POST"
                                                                         action="/pemilik/delete/{{ $n->id }}"
                                                                         style="display: inline-block;">
-                                                                        <button type="submit" class="btn btn-danger"
+                                                                        @csrf
+                                                                        @method('DELETE')
+
+                                                                        <button type="button" class="btn btn-danger"
+                                                                            onclick="confirmDelete('{{ $n->id }}')"
                                                                             {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
                                                                             <i class="bi bi-trash-fill"></i>
                                                                         </button>
                                                                     </form>
+
+                                                                    <script>
+                                                                        function confirmDelete(id) {
+                                                                            var result = confirm("Apakah kamu ingin menghapus pesanan ini?");
+                                                                            if (result) {
+                                                                                // User confirmed, submit the form
+                                                                                document.getElementById("deleteForm_" + id).submit();
+                                                                            } else {
+                                                                                // User canceled, do nothing
+                                                                            }
+                                                                        }
+                                                                    </script>
+
 
                                                                 </td>
                                                             </tr>

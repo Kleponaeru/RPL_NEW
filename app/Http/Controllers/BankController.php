@@ -22,4 +22,8 @@ class BankController extends Controller
 
         return redirect('/dashboard/bank')->with('flash_status', 'Status Successfully Updated');
     }
+    public function profilebank(){
+        // $n = User::find($id_user);
+        return view('profile_bank');
+    }
 }

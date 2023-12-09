@@ -18,7 +18,7 @@ class charCoba
     {
         // Now, the DB class is recognized
         $orders = DB::table('orders')
-            ->select(DB::raw('jns_smph'), DB::raw('COUNT(*) as total'))
+            ->select(DB::raw('jns_smph'), DB::raw('SUM(kg_sampah) as total'))
             ->groupBy(DB::raw('jns_smph'))
             ->get();
 
@@ -31,10 +31,16 @@ class charCoba
             $yAxis[] = $order->total;
         }
 
+        // Append 'kg' to each label
+        $yAxis = array_map(function ($value) {
+            return $value . ' kg';
+        }, $yAxis);
+
         return $this->chart->barChart()
-            ->setTitle('Grafik jenis sampah.')
-            ->setSubtitle('Seluruh transaksi yang telah anda buat.')
+            ->setTitle('Grafik Jenis Sampah')
+            ->setSubtitle('Jumlah Sampah Yang Telah Dibuang (KG)')
             ->addData('Transaksi Tervalidasi', $yAxis)
-            ->setXAxis($xAxis);
+            ->setLabels($xAxis); // Use setLabels to define the X-axis labels
     }
+
 }

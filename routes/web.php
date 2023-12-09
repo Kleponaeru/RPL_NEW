@@ -36,6 +36,7 @@ Route::middleware(['guest'])->group(function () {
         // Route::middleware(['CekRole:Pengambil'])->group(function () {
             Route::get('/luaran/pengambil', [PengambilController::class, 'luaran']);
             Route::get('/dashboard/pengambil', [PengambilController::class, 'Pengambil']);
+            Route::get('/profile/pengambil', [PengambilController::class, 'profilepengambil']);
             Route::get('/pengambil/buang', [PengambilController::class, 'formPesanan']);
             Route::post('/pengambil/postpesanan', [PengambilController::class, 'postPesanan']);
             Route::get('/pengambil/delete/{id}', [PengambilController::class, 'delete']);
@@ -56,10 +57,12 @@ Route::middleware(['guest'])->group(function () {
             Route::PUT('/pemilik/update/{id}', [PemilikController::class, 'update']);
             Route::get('/generate-pdf', [PemilikController::class, 'generatePDF']);
             Route::get('/pemilik/cetak/{id}', [PemilikController::class, 'PDFperrow']);
+            Route::delete('/pemilik/delete/{id}', [PemilikController::class, 'delete']);
 
         // });
         // Route::middleware(['CekRole:Bank'])->group(function () {
             Route::get('/dashboard/bank', [BankController::class, 'Bank']);
+            Route::get('/profile/bank', [BankController::class, 'profilebank']);
             Route::put('/status/confirm/bank/{id}', [BankController::class, 'updatestatusBank'])->name('confirm.status.bank');
             Route::put('/status/change/bank/{id}', [BankController::class, 'updatestatusBank'])->name('change.status.bank');
 
@@ -67,3 +70,4 @@ Route::middleware(['guest'])->group(function () {
         //logout
         Route::get('/logout', [authController::class, 'logout']);
 
+//
