@@ -241,8 +241,8 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <p class="card-title">Riwayat pesananmu</p>
-                                        <a class="btn btn-primary" href="/" role="button" type="submit">
-                                             <i class="bi bi-printer-fill"> Print All</i> 
+                                        <a class="btn btn-primary" href="/generate-pdf" role="button" type="submit">
+                                             <i class="bi bi-printer-fill"> Print All</i>
                                         </a>
                                     </div>
                                     <div class="row">
@@ -342,7 +342,7 @@
                                                                 <td>{{ $n->pengambilan }}</td>
                                                                 <td>Rp {{ number_format($n->harga, 0, ',', '.') }}</td>
                                                                 <td>
-                                                                    <a class="btn btn-primary" href="" role="button" type="submit">Print 
+                                                                    <a class="btn btn-primary" href="/pemilik/cetak/{{ $n->id }}" role="button" type="submit">Print
                                                                         <i class="bi bi-printer-fill"></i>
                                                                     </a>
                                                                 </td>

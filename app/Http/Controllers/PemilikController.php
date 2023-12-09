@@ -7,6 +7,7 @@ use App\Models\Riwayat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\App;
 
 class PemilikController extends Controller
 {
@@ -78,6 +79,26 @@ class PemilikController extends Controller
     public function profilepemilik(){
         // $n = User::find($id_user);
         return view('profile_pemilik');
+    }
+
+    public function generatePDF()
+    {
+        $data = Riwayat::all();
+        // $pdf = PDF::loadView('pdf.view', compact('data'));
+        $pdf = App::make('dompdf.wrapper');
+        $sum = $data->sum('harga');
+        $pdf->loadView('pdf', compact('data', 'sum'));
+
+        return $pdf->download('data.pdf');
+    }
+
+    public function PDFperrow($id)
+    {
+        $data = Riwayat::find($id);
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('pdfbyid', compact('data'));
+
+        return $pdf->download('data.pdf', ['data'=>$data]);
     }
 
 }
