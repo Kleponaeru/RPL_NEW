@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\PengambilSampah;
+use App\Models\Riwayat;
 use Illuminate\Http\Request;
 use App\Models\PemilikSampah;
+use App\Charts\chartPengambil;
 
 class PengambilController extends Controller
 {
@@ -13,6 +15,11 @@ class PengambilController extends Controller
         $orders = PemilikSampah::orderBy('id', 'desc')->paginate(15);
         $orders_pengambil = PemilikSampah::orderBy('id', 'desc')->paginate(15);
         return view('dashboard_pengambil', ['orders' => $orders], ['orders_pengambil' => $orders_pengambil]);
+    }
+    public function luaran(chartPengambil $chart)
+    {
+        $orders = Riwayat::orderBy('id', 'desc')->paginate(15);
+        return view('luaran_pengambil', ['orders' => $orders],['chart' => $chart->build()]);
     }
     public function formPesanan()
     {
