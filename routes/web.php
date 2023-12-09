@@ -70,3 +70,4 @@ Route::middleware(['guest'])->group(function () {
         //logout
         Route::get('/logout', [authController::class, 'logout']);
 
+//
