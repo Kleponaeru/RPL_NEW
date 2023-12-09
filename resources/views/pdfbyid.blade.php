@@ -76,7 +76,7 @@
     </table>
 
     <p class="total">
-        <strong>Total: Rp.</strong> {{ $sum }}
+        <strong>Total: Rp.</strong> {{ $data->harga }}
     </p>
 </div>
 

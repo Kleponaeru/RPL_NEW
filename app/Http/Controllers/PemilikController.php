@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class PemilikController extends Controller
 {
