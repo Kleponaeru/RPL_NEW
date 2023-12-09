@@ -39,10 +39,15 @@ class PageController extends Controller
         ]);
         return redirect("/login");
     }
+    public function berlangganan()
+    {
+        return view("berlanggan");
+    }
+ 
     public function dashboardPengambil()
     {
         return view("dashboard_pengambil");
-    }
+    } 
 
     public function dashboardPemilik()
     {

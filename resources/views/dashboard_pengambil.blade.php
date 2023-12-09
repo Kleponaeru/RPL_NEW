@@ -70,6 +70,11 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/luaran/pengambil">
+                            <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i> Luaran</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="dropdown-item border-top" href="/logout"><i class="bi bi-box-arrow-right"></i>
                             Logout</a>
                         <i class="icon-paper menu-icon"></i>

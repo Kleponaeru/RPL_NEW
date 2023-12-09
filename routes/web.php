@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['guest'])->group(function () {
+    Route::get('/berlangganan', [PageController::class, 'berlangganan']);
     Route::get('/chart', [PageController::class, 'chart']);
     Route::get('/riwayat/pemilik', [PemilikController::class, 'riwayat']);
     // Route::get('/grafik', [PageController::class, 'grafik']);
@@ -33,6 +34,7 @@ Route::middleware(['guest'])->group(function () {
 // Route::middleware(['auth'])->group(function () {
 //     Route::middleware(['PreventBackHistory'])->group(function () {
         // Route::middleware(['CekRole:Pengambil'])->group(function () {
+            Route::get('/luaran/pengambil', [PengambilController::class, 'luaran']);
             Route::get('/dashboard/pengambil', [PengambilController::class, 'Pengambil']);
             Route::get('/profile/pengambil', [PengambilController::class, 'profilepengambil']);
             Route::get('/pengambil/buang', [PengambilController::class, 'formPesanan']);
