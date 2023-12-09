@@ -31,8 +31,8 @@
                             <div class="brand-logo">
                                 <img src="{{ asset('images/luna-icon.svg') }}" alt="logo" />
                             </div>
-                            <h4>New here?</h4>
-                            <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+                            <h4>Baru di sini?</h4>
+                            <h6 class="font-weight-light">Mendaftar itu mudah. Hanya membutuhkan beberapa langkah.</h6>
                             <form class="pt-3" action="/register_post" method="POST">
                                 @csrf
                                 <div class="form-group">
@@ -59,7 +59,7 @@
                                         type="submit">SIGN UP</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Already have an account? <a href="/login" class="text-primary">Login</a>
+                                    Sudah punya akun? <a href="/login" class="text-primary">SIGN IN</a>
                                 </div>
 
                             </form>

@@ -9,7 +9,7 @@
                         <div class="card-body">
                             <form action="/pemilik/postpesanan" method="POST">
                                 @csrf
-                                <h2 class="mb-4 fs-4 fw-bold text-center">Buat Pesanan Sampah</h2>
+                                <h2 class="mb-4 fs-4 fw-bold text-center">Pemesanan Sampah</h2>
 
                                 <div class="mb-3 row align-items-center">
                                     <label for="berat" class="col-sm-4 col-form-label">Berat Sampah (kg)</label>
@@ -85,7 +85,7 @@
 
                                 <div class="col-md-12 text-center mb-4">
                                     <button type="submit" class="btn btn-primary btn-lg px-4">
-                                        Submit
+                                        Bayar
                                         <!-- Add an icon if needed -->
                                     </button>
                                 </div>
