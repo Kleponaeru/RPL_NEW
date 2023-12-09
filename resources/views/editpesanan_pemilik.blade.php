@@ -23,8 +23,10 @@
                                     <div class="col-sm-8">
                                         <select class="form-select" aria-label="Jenis Sampah" name="jns_smph">
                                             <option selected disabled>Pilih Jenis Sampah</option>
-                                            <option value="Organik">Sampah Basah (Organik)</option>
-                                            <option value="Anorganik">Sampah Padat (Anorganik)</option>
+                                            <option value="Organik" {{ $n->jns_smph == 'Organik' ? 'selected' : '' }}>Sampah
+                                                Basah (Organik)</option>
+                                            <option value="Anorganik" {{ $n->jns_smph == 'Anorganik' ? 'selected' : '' }}>
+                                                Sampah Padat (Anorganik)</option>
                                         </select>
                                     </div>
                                 </div>
@@ -33,11 +35,11 @@
                                     <div class="col-sm-8">
                                         <select class="form-select" aria-label="Bank Sampah" name="id_location">
                                             <option selected disabled>Pilih Bank Sampah</option>
-                                            <option value=1 {{ $n->id_location == 1 ? 'selected' : '' }}>TPA Kota Baru
+                                            <option value=1 {{ $n->id_location == '1' ? 'selected' : '' }}>TPA Kota Baru
                                             </option>
-                                            <option value=2 {{ $n->id_location == 2 ? 'selected' : '' }}>
-                                                TPA Sampah Karanganyar</option>
-                                            <option value=3 {{ $n->id_location == 3 ? 'selected' : '' }}>TPA Amplaz
+                                            <option value=2 {{ $n->id_location == '2' ? 'selected' : '' }}>TPA Sampah
+                                                Karanganyar</option>
+                                            <option value=3 {{ $n->id_location == '3' ? 'selected' : '' }}>TPA Amplaz
                                             </option>
                                         </select>
                                     </div>
@@ -81,7 +83,8 @@
                                 <div class="mb-3 row align-items-center">
                                     <label for="harga" class="col-sm-4 col-form-label">Harga</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name='harga' class="form-control" id="harga" readonly>
+                                        <input type="text" name='harga' class="form-control" id="harga"
+                                            value={{ $n->harga }} readonly>
                                         <div id="formattedHarga"></div>
                                     </div>
                                 </div>
@@ -97,6 +100,7 @@
             </div>
         </div>
     </main>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var beratInput = document.getElementById('berat');
