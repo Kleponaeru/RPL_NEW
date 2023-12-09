@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PemilikSampah;
+use App\Models\Riwayat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -15,6 +16,11 @@ class PemilikController extends Controller
     {
         $orders = PemilikSampah::orderBy('id', 'desc')->paginate(15);
         return view('dashboard_pemilik', ['orders' => $orders]);
+    }
+    public function riwayat()
+    {
+        $orders = Riwayat::orderBy('id', 'desc')->paginate(15);
+        return view('riwayat_pemilik', ['orders' => $orders]);
     }
 
     public function formPesanan()

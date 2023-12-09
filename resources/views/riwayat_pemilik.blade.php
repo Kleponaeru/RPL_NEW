@@ -181,19 +181,37 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/locations">
+                        <a class="nav-link" data-toggle="collapse" href="/locations" aria-expanded="false"
+                            aria-controls="ui-basic">
+
                             <span class="menu-title"><i class="bi bi-geo-alt-fill"></i> Maps</span>
                         </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column sub-menu">
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/grafik">
-                            <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i> Luaran</span>
+                        <a class="nav-link" data-toggle="collapse" href="/grafik" aria-expanded="false"
+                            aria-controls="ui-basic">
+
+                            <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i></i> Luaran</span>
                         </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column sub-menu">
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/riwayat/pemilik">
+                        <a class="nav-link" data-toggle="collapse" href="/riwayat/pemilik" aria-expanded="false"
+                            aria-controls="ui-basic">
+
                             <span class="menu-title"><i class="bi bi-clock-history"></i> History</span>
                         </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column sub-menu">
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="dropdown-item border-top" href="/logout"><i class="bi bi-box-arrow-right"></i> Log
@@ -203,7 +221,6 @@
                     </li>
                 </ul>
             </nav>
-            
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -223,9 +240,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <p class="card-title">Apa saja pesananmu?</p>
-                                        <a class="btn btn-primary" href="/pemilik/buang" role="button">
-                                            <i class="bi bi-plus-circle-fill"></i>
+                                        <p class="card-title">Riwayat pesananmu</p>
+                                        <a class="btn btn-primary" href="/" role="button" type="submit">
+                                             <i class="bi bi-printer-fill"> Print All</i> 
                                         </a>
                                     </div>
                                     <div class="row">
@@ -325,25 +342,9 @@
                                                                 <td>{{ $n->pengambilan }}</td>
                                                                 <td>Rp {{ number_format($n->harga, 0, ',', '.') }}</td>
                                                                 <td>
-                                                                    <form method="GET"
-                                                                        action="/pemilik/formedit/{{ $n->id }}"
-                                                                        style="display: inline-block;">
-                                                                        <button type="submit" class="btn btn-success"
-                                                                            {{ $n->status === 'Diterima' ? 'disabled' : '' }}
-                                                                            data-toggle="tooltip" title="Edit">
-                                                                            <i class="bi bi-pencil-square"></i>
-                                                                        </button>
-                                                                    </form>
-
-                                                                    <form method="GET"
-                                                                        action="/pemilik/delete/{{ $n->id }}"
-                                                                        style="display: inline-block;">
-                                                                        <button type="submit" class="btn btn-danger"
-                                                                            {{ $n->status === 'Diterima' ? 'disabled' : '' }}>
-                                                                            <i class="bi bi-trash-fill"></i>
-                                                                        </button>
-                                                                    </form>
-
+                                                                    <a class="btn btn-primary" href="" role="button" type="submit">Print 
+                                                                        <i class="bi bi-printer-fill"></i>
+                                                                    </a>
                                                                 </td>
                                                             </tr>
                                                             @php
