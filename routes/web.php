@@ -52,6 +52,8 @@ Route::middleware(['guest'])->group(function () {
             Route::get('/pemilik/delete/{id}', [PemilikController::class, 'delete']);
             Route::get('/pemilik/formedit/{id}', [PemilikController::class, 'formedit']);
             Route::PUT('/pemilik/update/{id}', [PemilikController::class, 'update']);
+            Route::get('/generate-pdf', [PemilikController::class, 'generatePDF']);
+            Route::get('/pemilik/cetak/{id}', [PemilikController::class, 'PDFperrow']);
 
         // });
         // Route::middleware(['CekRole:Bank'])->group(function () {
