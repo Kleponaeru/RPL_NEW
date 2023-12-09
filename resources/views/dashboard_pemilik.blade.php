@@ -186,7 +186,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/grafik">
+                        <a class="nav-link" href="/chart">
                             <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i> Luaran</span>
                         </a>
                     </li>
