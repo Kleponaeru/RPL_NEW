@@ -192,7 +192,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="/grafik" aria-expanded="false"
+                        <a class="nav-link" data-toggle="collapse" href="/chart" aria-expanded="false"
                             aria-controls="ui-basic">
 
                             <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i></i> Luaran</span>
