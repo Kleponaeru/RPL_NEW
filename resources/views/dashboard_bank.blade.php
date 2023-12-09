@@ -97,7 +97,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <p class="card-title">Bagaimana pembuangan ke Bank Sampah-mu?</p>
+                                        <p class="card-title">Rincian Pembuangan Sampah</p>
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
@@ -179,8 +179,67 @@
                                                         });
                                                     </script>
                                                 @endif
+
+                                                <?php
+                                                // Set the maximum capacity (you can adjust this value)
+                                                $maximumCapacity = 100;
+                                                $minimumCapacity = 0;
+                                                
+                                                // Assuming $orders is the array of orders
+                                                foreach ($orders as $n) {
+                                                    if ($n->location && $n->location->id_location == 1) {
+                                                        // Sum up the kg_sampah values
+                                                        $minimumCapacity += $n->kg_sampah;
+                                                    }
+                                                }
+                                                
+                                                // Calculate the percentage of orders capacity
+                                                $percentage = ($minimumCapacity / $maximumCapacity) * 100;
+                                                ?>
+
+                                                <div class="capacity-section">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="maxCapacity">Berapa Kapasitas
+                                                                    Pembuangan?</label>
+                                                                <div class="input-group">
+                                                                    <input type="number" id="maxCapacity"
+                                                                        name="maxCapacity" class="form-control"
+                                                                        value="{{ $maximumCapacity }}" min="1">
+                                                                    <div class="input-group-append">
+                                                                        <button id="updateCapacity"
+                                                                            class="btn btn-primary"><b>Ubah</b></button>
+                                                                    </div>
+                                                                </div><br>
+                                                                <p class="card-text">Terisi <b
+                                                                        id="displayFilledCapacity">{{ $minimumCapacity }}
+                                                                        kg</b> dari <b
+                                                                        id="displayMaxCapacity">{{ $maximumCapacity }}
+                                                                        kg</b>
+                                                                    <span id="remainingCapacity">(tersisa
+                                                                        <b>{{ $maximumCapacity - $minimumCapacity }}
+                                                                            kg</b>)</span>
+                                                                </p>
+
+                                                                <!-- Progress Bar -->
+                                                                <div class="progress mt-3">
+                                                                    <div class="progress-bar" role="progressbar"
+                                                                        style="width: {{ $percentage }}%;"
+                                                                        aria-valuenow="{{ $percentage }}"
+                                                                        aria-valuemin="0" aria-valuemax="100">
+                                                                    </div>
+                                                                    <!-- Maximum Capacity Label -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                                 <table id="example" class="display expandable-table"
                                                     style="width:100%">
+                                                    <!-- Table Header -->
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
@@ -193,14 +252,25 @@
                                                             <th>Terima/Tolak?</th>
                                                         </tr>
                                                     </thead>
+                                                    <!-- Table Body -->
+
+                                                    @php
+                                                        $counter = 0;
+                                                    @endphp
+
                                                     <tbody>
                                                         @foreach ($orders as $idx => $n)
                                                             @if ($n->location && $n->location->id_location == 1)
                                                                 {{-- Adjust 1 to your desired id_location --}}
                                                                 <tr>
                                                                     <th scope="row">
-                                                                        {{ $orders->firstItem() + $idx }}
+                                                                        {{ $counter + 1 }}
                                                                     </th>
+
+                                                                    @php
+                                                                        $counter++;
+                                                                    @endphp
+
                                                                     <td>{{ optional($n->location)->nama_location }}
                                                                     </td>
                                                                     <td>{{ $n->kg_sampah }}</td>
@@ -210,10 +280,8 @@
                                                                         <span
                                                                             class="badge 
                                                                             @if ($n->status === 'Diterima') badge-success
-                                                                            @elseif($n->status === 'Process')
-                                                                                badge-warning
-                                                                            @elseif($n->status === 'Ditolak')
-                                                                                badge-danger @endif">
+                                                                            @elseif($n->status === 'Process') badge-warning
+                                                                            @elseif($n->status === 'Ditolak') badge-danger @endif">
                                                                             {{ $n->status }}
                                                                         </span>
                                                                     </td>
@@ -301,10 +369,48 @@
     <script src="js/dashboard.js"></script>
     <script src="js/Chart.roundedBarCharts.js"></script>
     <!-- End custom js for this page-->
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#updateCapacity').on('click', function() {
+                // Get the new maximum capacity from the input field
+                var newMaxCapacity = parseInt($('#maxCapacity').val());
+
+                // Recalculate the filled capacity based on existing orders
+                var newFilledCapacity = {{ $minimumCapacity }};
+
+                // Check if the new maximum capacity is greater than or equal to the filled capacity
+                if (newMaxCapacity >= newFilledCapacity) {
+                    // Deduct the filled capacity from the new maximum capacity to get remaining capacity
+                    var newRemainingCapacity = newMaxCapacity - newFilledCapacity;
+
+                    // Update the display of maximum capacity
+                    $('#displayMaxCapacity').html(newMaxCapacity + " kg");
+
+                    // Update the display of remaining capacity
+                    $('#remainingCapacity').html('(tersisa <b>' + newRemainingCapacity + ' kg</b>)');
+
+                    // Recalculate the percentage based on the updated maximum capacity and filled capacity
+                    var newPercentage = (newFilledCapacity / newMaxCapacity) * 100;
+
+                    // Update the progress bar width
+                    $('.progress-bar').css('width', newPercentage + "%");
+                } else {
+                    // Display an error message
+                    alert(
+                        "Maaf, kapasitas maksimal tidak dapat lebih kecil dari kapasitas yang sudah terisi. Silakan masukkan nilai kapasitas maksimal yang lebih tinggi dari atau sama dengan kapasitas yang sudah terisi.");
+
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
-cript src="js/settings.js"></script>
+<script src="js/settings.js"></script>
 <script src="js/todolist.js"></script>
 <!-- endinject -->
 <!-- Custom js for this page-->
@@ -314,7 +420,7 @@ cript src="js/settings.js"></script>
 </body>
 
 </html>
-cript src="js/settings.js"></script>
+<script src="js/settings.js"></script>
 <script src="js/todolist.js"></script>
 <!-- endinject -->
 <!-- Custom js for this page-->
