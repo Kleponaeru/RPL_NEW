@@ -42,4 +42,5 @@ class charCoba
             ->addData('Transaksi Tervalidasi', $yAxis)
             ->setLabels($xAxis); // Use setLabels to define the X-axis labels
     }
+
 }

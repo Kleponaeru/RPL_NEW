@@ -61,4 +61,8 @@ class PengambilController extends Controller
 
         return redirect('/dashboard/pengambil')->with('flash_status', 'Status Successfully Updated');
     }
+    public function profilepengambil(){
+        // $n = User::find($id_user);
+        return view('profile_pengambil');
+    }
 }

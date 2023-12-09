@@ -37,16 +37,16 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo mr-5" href="index.html"><img
+                <a class="navbar-brand brand-logo mr-5" href="/dashboard/pengambil"><img
                         src="{{ asset('images/luna-icon.svg') }}" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg"
+                <a class="navbar-brand brand-logo-mini" href="/dashboard/pengambil"><img src="images/logo-mini.svg"
                         alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="icon-menu"></span>
                 </button>
-                <a class="btn btn-primary" href="/profile/pemilik" role="button">Profile <i
+                <a class="btn btn-primary" href="/profile/pengambil" role="button">Profile <i
                         class="bi bi-person-fill"></i></a>
             </div>
         </nav>
@@ -55,7 +55,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/dashboard/pengambil">
                             <span class="menu-title"><i class="bi bi-house-door-fill"></i> Dashboard</span>
                         </a>
                     </li>
@@ -204,7 +204,7 @@
                                                                 <td>{{ $n->jns_smph }}</td>
                                                                 <td>
                                                                     <span
-                                                                        class="badge 
+                                                                        class="badge
                                                                         @if ($n->status === 'Diterima') badge-success
                                                                         @elseif($n->status === 'Process')
                                                                             badge-warning
