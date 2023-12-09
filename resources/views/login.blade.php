@@ -31,8 +31,8 @@
                             <div class="brand-logo">
                                 <img src="{{ asset('images/luna-icon.svg') }}" alt="logo" />
                             </div>
-                            <h4>Hello! Let's get started</h4>
-                            <h6 class="font-weight-light">Sign in to continue.</h6>
+                            <h4>Halo! Mari kita mulai!</h4>
+                            <h6 class="font-weight-light">Masuk untuk melanjutkan.</h6>
                             
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -58,7 +58,7 @@
                                     <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Don't have an account? <a href="/register" class="text-primary">Create</a>
+                                    Belum punya akun? <a href="/register" class="text-primary">SIGN UP</a>
                                 </div>
                             </form>
                             <!-- container-scroller -->

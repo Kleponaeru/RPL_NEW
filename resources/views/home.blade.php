@@ -51,14 +51,12 @@
                                 <div class="row">
                                     <div class="col-md-5 offset-md-1">
                                         <div class="detail-box">
-                                            <h1>
-                                                Manage Your Waste with - LUNA<br>
-                                            </h1>
-                                            <p>
-                                                Introducing an innovative online platform exclusively designed for effective
-                                                waste management in Yogyakarta. <br><br>
-                                                This dedicated website serves as a comprehensive resource, offering a
-                                                user-friendly interface to enhance their waste disposal practices.
+                                            <h1>Atur Sampah Kamu dengan - LUNA<br></h1>
+                                            <p>Perkenalkan platform online inovatif yang dirancang khusus untuk manajemen
+                                                sampah yang efektif di Yogyakarta.<br><br>
+                                                Situs web ini yang didedikasikan berfungsi sebagai sumber daya komprehensif,
+                                                menawarkan antarmuka yang ramah pengguna untuk meningkatkan praktik
+                                                pembuangan sampah.
                                             </p>
                                             <div class="btn-box">
                                                 <a href="/login" class="btn-1">
