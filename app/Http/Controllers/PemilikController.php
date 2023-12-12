@@ -41,7 +41,7 @@ class PemilikController extends Controller
             'pengambilan' =>$request->pengambilan,
             'harga' =>$request->harga,
         ]);
-        return redirect("/dashboard/pemilik")->with('flash_added', 'Data Successfully Added');
+        return redirect("/pemilik/dashboard")->with('flash_added', 'Data Successfully Added');
     }
     // public function profilepengambil()
     // {
@@ -55,7 +55,7 @@ class PemilikController extends Controller
     {
         $n = PemilikSampah::find($id);
         $n->delete();
-        return redirect("/dashboard/pemilik")->with('flash_deleted', 'Data Successfully Deleted');
+        return redirect("/pemilik/dashboard")->with('flash_deleted', 'Data Successfully Deleted');
     }
 
     public function update($id,Request $request)
@@ -69,7 +69,7 @@ class PemilikController extends Controller
         $n->harga = $request->harga;
         $n -> save();
 
-        return redirect("/dashboard/pemilik")->with('flash_edited', 'Data Successfully Edited');
+        return redirect("/pemilik/dashboard")->with('flash_edited', 'Data Successfully Edited');
     }
 
     public function formedit($id)

@@ -22,4 +22,11 @@ class LocationController extends Controller
         return view('pesanan_pemilik', ['locations' => $locations]);
     }
 
+    public function mapsPengambil()
+    {
+        // Get all locations from the locations table
+        $locations = DB::table('locations')->get();
+        // Send all locations to the view named maps
+        return view('maps_pengambil', ['locations' => $locations]);
+    }
 }

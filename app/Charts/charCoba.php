@@ -37,8 +37,8 @@ class charCoba
         }, $yAxis);
 
         return $this->chart->barChart()
-            ->setTitle('Grafik Jenis Sampah')
-            ->setSubtitle('Jumlah Sampah Yang Telah Dibuang (KG)')
+            ->setTitle('Bagaimana Perbandingan Sampahmu?')
+            ->setSubtitle('Perbandingan sampah organik dan anorganikmu yang diambil.')
             ->addData('Transaksi Tervalidasi', $yAxis)
             ->setLabels($xAxis); // Use setLabels to define the X-axis labels
     }

@@ -1,4 +1,5 @@
 @extends('Layouts.main')
+<title>LUNA | Ubah Pesanan</title>
 
 @section('content')
     <main class="mt-5 pt-3">

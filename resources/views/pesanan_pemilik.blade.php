@@ -41,9 +41,12 @@
                                         <select class="form-select" aria-label="Bank Sampah" name="id_location"
                                             id="id_location">
                                             <option selected disabled>Pilih Bank Sampah</option>
-                                            <option value=1>TPA Kota Baru</option>
-                                            <option value=2>TPA Sampah Karanganyar</option>
-                                            <option value=3>TPA Amplaz</option>
+                                            <option value="1" data-latitude="-7.787534844496852"
+                                                data-longitude="110.3693522810411">TPA Kota Baru</option>
+                                            <option value="2" data-latitude="-7.8138741831102685"
+                                                data-longitude="110.37186953460812">TPA Sampah Karanganyar</option>
+                                            <option value="3" data-latitude="-7.782460662075439"
+                                                data-longitude="110.40113851084658">TPA Amplaz</option>
                                         </select>
                                     </div>
                                 </div>
@@ -103,13 +106,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Function to initialize the map
             function initializeMap() {
-                var selectedBankSampah = document.getElementById('id_location');
-                var latitude1 = parseFloat(selectedBankSampah.options[selectedBankSampah.selectedIndex]
-                    .getAttribute('data-latitude')) || 0;
-                var longitude1 = parseFloat(selectedBankSampah.options[selectedBankSampah.selectedIndex]
-                    .getAttribute('data-longitude')) || 0;
-
-                var bankSampahMap = L.map('bankSampahMap').setView([latitude1, longitude1], 14);
+                var bankSampahMap = L.map('bankSampahMap').setView([-7.787534844496852, 110.3693522810411], 14);
 
                 // Add a basemap (e.g., OpenStreetMap)
                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -117,37 +114,39 @@
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }).addTo(bankSampahMap);
 
-                // Add markers for the selected Bank Sampah and two additional locations
-                L.marker([-7.787534844496852, 110.3693522810411])
-                    .addTo(bankSampahMap)
-                    .bindPopup('TPA Kota Baru')
-                    .openPopup();
+                // Function to update the marker based on the selected option
+                function updateMarker() {
+                    var selectedBankSampah = document.getElementById('id_location');
+                    var latitude = parseFloat(selectedBankSampah.options[selectedBankSampah.selectedIndex]
+                        .getAttribute('data-latitude')) || 0;
+                    var longitude = parseFloat(selectedBankSampah.options[selectedBankSampah.selectedIndex]
+                        .getAttribute('data-longitude')) || 0;
 
-                // Example coordinates for two additional locations
-                var latitude2 = -7.8138741831102685;
-                var longitude2 = 110.37186953460812;
+                    // Clear existing markers
+                    bankSampahMap.eachLayer(function(layer) {
+                        if (layer instanceof L.Marker) {
+                            layer.remove();
+                        }
+                    });
 
-                var latitude3 = -7.782460662075439;
-                var longitude3 = 110.40113851084658;
+                    // Add a new marker for the selected location
+                    L.marker([latitude, longitude])
+                        .addTo(bankSampahMap)
+                        .bindPopup(selectedBankSampah.options[selectedBankSampah.selectedIndex].text)
+                        .openPopup();
+                }
 
-                // Add markers for the two additional locations
-                L.marker([latitude2, longitude2])
-                    .addTo(bankSampahMap)
-                    .bindPopup('TPA Sampah Karanganyar')
-                    .openPopup();
+                // Call the updateMarker function when the dropdown value changes
+                document.getElementById('id_location').addEventListener('change', updateMarker);
 
-                L.marker([latitude3, longitude3])
-                    .addTo(bankSampahMap)
-                    .bindPopup('TPA Amplaz')
-                    .openPopup();
+                // Call the updateMarker function initially to set the marker based on the default selected option
+                updateMarker();
             }
 
             // Call the initializeMap function
             initializeMap();
         });
     </script>
-
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

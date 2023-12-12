@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bank Sampah</title>
+    <title>LUNA | Bank Sampah</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/feather/feather.css">
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -36,17 +36,17 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo mr-5" href="/dashboard/bank"><img
+                <a class="navbar-brand brand-logo mr-5" href="/bank/dashboard"><img
                         src="{{ asset('images/luna-icon.svg') }}" /></a>
-                <a class="navbar-brand brand-logo-mini" href="/dashboard/bank"><img src="images/logo-mini.svg"
+                <a class="navbar-brand brand-logo-mini" href="/bank/dashboard"><img src="images/logo-mini.svg"
                         alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="icon-menu"></span>
                 </button>
-                <a class="btn btn-primary" href="/profile/bank" role="button">Profile <i
-                        class="bi bi-person-fill"></i></a>
+                <a class="btn btn-primary" href="/bank/profile" role="button"><i
+                        class="bi bi-person-circle"></i></a>
             </div>
         </nav>
         <!-- partial -->
@@ -54,22 +54,18 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/dashboard/bank">
+                        <a class="nav-link" href="/bank/dashboard">
                             <span class="menu-title"><i class="bi bi-house-door-fill"></i> Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="/locations" aria-expanded="false"
-                            aria-controls="ui-basic">
-                            <span class="menu-title"><i class="bi bi-geo-alt-fill"></i> Maps</span>
-                        </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/luaran/bank">
+                        <a class="nav-link" href="/bank/luaran">
                             <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i> Luaran</span>
                         </a>
                     </li>
@@ -88,7 +84,7 @@
                         <div class="col-md-12 grid-margin">
                             <div class="row">
                                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                    <h3 class="font-weight-bold">Selamat datang! {{ Auth::user()->username ?? '' }}
+                                    <h3 class="font-weight-bold">Bank Sampah {{ Auth::user()->username ?? '' }}
                                     </h3>
                                     <h6 class="font-weight-normal mb-0">Kamu dapat melihat pembuangan ke Bank
                                         Sampah-mu di sini!
@@ -279,8 +275,8 @@
 
                                                                     <td>{{ optional($n->location)->nama_location }}
                                                                     </td>
-                                                                    <td>{{ $n->kg_sampah }}</td>
-                                                                    <td>{{ $n->jam }}</td>
+                                                                    <td>{{ $n->kg_sampah }} kg</td>
+                                                                    <td>{{ $n->jam }} WIB</td>
                                                                     <td>{{ $n->jns_smph }}</td>
                                                                     <td>
                                                                         <span
