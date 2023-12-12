@@ -25,6 +25,7 @@ Route::middleware(['guest'])->group(function () {
 
     // Route::get('/grafik', [PageController::class, 'grafik']);
     Route::get('/locations', [LocationController::class, 'index']);
+    Route::get('/pesanan_pemilik', [LocationController::class, 'getPesananPemilikView']);
     Route::get('/', [PageController::class, 'home']);
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'validateLogin']);
