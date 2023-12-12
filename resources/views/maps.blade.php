@@ -23,12 +23,15 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
+    var locations = @json($locations);
+
     var map = L.map('map').setView([0, 0], 30);
     // Add a basemap (e.g., OpenStreetMap)
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; <a href = "http://www.openstreetmap.org/copyright" > OpenStreetMap < /a>'
-        }).addTo(map);
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
     // Get the user's geolocation and add a marker
     navigator.geolocation.getCurrentPosition(function(position) {
         var lat = position.coords.latitude;
@@ -37,17 +40,18 @@
         var userLocation = L.marker([lat, lon]).addTo(map);
         userLocation.bindPopup('You are here!').openPopup();
     });
-    // Add a marker to the all destinations
-    var locations = <?php echo json_encode($locations); ?>;
-            locations.forEach(function(location) {
-                L.marker([location.latitude, location.longitude])
-                    .addTo(map)
-                    .bindPopup('<strong>' + location.nama + '</strong><br>' +
-                        'Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude)
-                    .openPopup().on('click', function(){
-                        window.location.href = '/' + location.nama;
-                    })
-            });
+
+    // Add a marker to all destinations
+    locations.forEach(function(location) {
+        L.marker([location.latitude, location.longitude])
+            .addTo(map)
+            .bindPopup('<strong>' + location.nama + '</strong><br>' +
+                'Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude)
+            .openPopup().on('click', function() {
+                window.location.href = '/' + location.nama;
+            })
+    });
 </script>
+
 
 </html>
