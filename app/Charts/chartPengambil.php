@@ -32,8 +32,8 @@ class chartPengambil
         }
 
         return $this->chart->barChart()
-            ->setTitle('Grafik jenis sampah.')
-            ->setSubtitle('Seluruh transaksi yang telah anda selesaikan.')
+            ->setTitle('Grafik Sampah Organik/Anorganik (kg)')
+            ->setSubtitle('Perbandingan banyaknya sampah organik dan anorganik.')
             ->addData('Transaksi Tervalidasi', $yAxis)
             ->setXAxis($xAxis);
     }

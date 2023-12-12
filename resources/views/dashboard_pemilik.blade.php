@@ -15,7 +15,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Pemilik Sampah</title>
+    <title>LUNA | Pemilik Sampah</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/feather/feather.css">
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -40,7 +40,6 @@
 </head>
 
 <body>
-   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
@@ -48,19 +47,17 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo mr-5" href="/dashboard/pemilik"><img
+                <a class="navbar-brand brand-logo mr-5" href="/pemilik/dashboard"><img
                         src="{{ asset('images/luna-icon.svg') }}" /></a>
-                <a class="navbar-brand brand-logo-mini" href="/dashboard/pemilik"><img src="images/logo-mini.svg"
+                <a class="navbar-brand brand-logo-mini" href="/pemilik/dashboard"><img src="images/logo-mini.svg"
                         alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="icon-menu"></span>
                 </button>
-                <a class="btn btn-primary" href="/profile/pemilik" role="button">Profile <i
-                        class="bi bi-person-fill"></i></a>
-
-
+                <a class="btn btn-primary" href="/pemilik/profile" role="button"><i
+                        class="bi bi-person-circle"></i></a>
             </div>
         </nav>
         <!-- partial -->
@@ -68,18 +65,18 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/dashboard/pemilik">
+                        <a class="nav-link" href="/pemilik/dashboard">
                             <span class="menu-title"><i class="bi bi-house-door-fill"></i> Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="/locations" aria-expanded="false"
+                        <a class="nav-link" data-toggle="collapse" href="/pemilik/lokasi-pembuangan-sampah" aria-expanded="false"
                             aria-controls="ui-basic">
-                            <span class="menu-title"><i class="bi bi-geo-alt-fill"></i> Maps</span>
+                            <span class="menu-title"><i class="bi bi-geo-alt-fill"></i> Lokasi Pembuangan</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/luaran/pemilik">
+                        <a class="nav-link" href="/pemilik/luaran">
                             <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i> Luaran</span>
                         </a>
                     </li>
@@ -104,7 +101,7 @@
                         <div class="col-md-12 grid-margin">
                             <div class="row">
                                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                    <h3 class="font-weight-bold">Selamat datang! {{ Auth::user()->username ?? '' }}</h3>
+                                    <h3 class="font-weight-bold">Pemilik Sampah {{ Auth::user()->username ?? '' }}</h3>
                                     <h6 class="font-weight-normal mb-0">Kamu dapat melihat pesananmu di halaman ini!</h6>
                                     <div class="countdown" id="countdown"></div>
                                 </div>
@@ -121,7 +118,7 @@
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <p class="card-title">Apa saja pesananmu?</p>
                                         <a class="btn btn-primary" href="/pemilik/buang" role="button">
-                                            <i class="bi bi-plus-circle-fill"></i>
+                                            <i class="bi bi-plus-lg"></i>
                                         </a>
                                     </div>
                                     <div class="row">

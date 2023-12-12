@@ -1,4 +1,5 @@
 @extends('Layouts.main')
+<title>LUNA | Ubah Pesanan</title>
 
 @section('content')
     <main class="mt-5 pt-3">
@@ -10,7 +11,7 @@
                             <form action="/pemilik/update/{{ $n->id }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <h4 class="mb-3 fs-4 fw-bold text-center">Buat Pesanan Sampah</h4>
+                                <h4 class="mb-3 fs-4 fw-bold text-center">Ubah Pesanan Sampah</h4>
                                 <div class="mb-3 row">
                                     <label for="berat" class="col-sm-4 col-form-label">Berat Sampah (kg)</label>
                                     <div class="col-sm-8">

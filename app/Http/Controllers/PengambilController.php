@@ -33,13 +33,13 @@ class PengambilController extends Controller
             'status' =>$request->status,
             'jns_smph' =>$request->jns_smph,
         ]);
-        return redirect("/dashboard/pengambil")->with('flash_added', 'Data Successfully Added');;
+        return redirect("/pengambil/dashboard")->with('flash_added', 'Data Successfully Added');;
     }
     public function delete($id)
     {
         $n = PengambilSampah::find($id);
         $n->delete();
-        return redirect("/dashboard/pengambil")->with('flash_deleted', 'Data Successfully Deleted');
+        return redirect("/pengambil/dashboard")->with('flash_deleted', 'Data Successfully Deleted');
     }
 
     public function update($id,Request $request)
@@ -51,7 +51,7 @@ class PengambilController extends Controller
         $n->jns_smph = $request->jns_smph;
         $n -> save();
 
-        return redirect("/dashboard/pengambil")->with('flash_edited', 'Data Successfully Edited');
+        return redirect("/pengambil/dashboard")->with('flash_edited', 'Data Successfully Edited');
     }
 
     public function formedit($id)
@@ -66,7 +66,7 @@ class PengambilController extends Controller
         // Update your model or database table with the new status value
         PemilikSampah::where('id', $id)->update(['pengambilan' => $statusValue]);
 
-        return redirect('/dashboard/pengambil')->with('flash_status', 'Status Successfully Updated');
+        return redirect('/pengambil/dashboard')->with('flash_status', 'Status Successfully Updated');
     }
     public function profilepengambil(){
         // $n = User::find($id_user);

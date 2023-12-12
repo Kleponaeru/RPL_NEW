@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Pemilik Sampah</title>
+    <title>LUNA | Luaran Pemilik Sampah</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/feather/feather.css">
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -37,185 +37,47 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo mr-5" href="index.html"><img
+                <a class="navbar-brand brand-logo mr-5" href="/pemilik/dashboard"><img
                         src="{{ asset('images/luna-icon.svg') }}" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg"
+                <a class="navbar-brand brand-logo-mini" href="/pemilik/dashboard"><img src="images/logo-mini.svg"
                         alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="icon-menu"></span>
                 </button>
-                <a class="btn btn-primary" href="/profile/pemilik" role="button">Profile <i
-                        class="bi bi-person-fill"></i></a>
-
-
+                <a class="btn btn-primary" href="/pemilik/profile" role="button"><i
+                        class="bi bi-person-circle"></i></a>
             </div>
         </nav>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_settings-panel.html -->
-            <div class="theme-setting-wrapper">
-                <div id="settings-trigger"><i class="ti-settings"></i></div>
-                <div id="theme-settings" class="settings-panel">
-                    <i class="settings-close ti-close"></i>
-                    <p class="settings-heading">SIDEBAR SKINS</p>
-                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-                        <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
-                    </div>
-                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
-                        <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
-                    </div>
-                    <p class="settings-heading mt-2">HEADER SKINS</p>
-                    <div class="color-tiles mx-0 px-4">
-                        <div class="tiles success"></div>
-                        <div class="tiles warning"></div>
-                        <div class="tiles danger"></div>
-                        <div class="tiles info"></div>
-                        <div class="tiles dark"></div>
-                        <div class="tiles default"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="right-sidebar" class="settings-panel">
-                <i class="settings-close ti-close"></i>
-                <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab"
-                            aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab"
-                            aria-controls="chats-section">CHATS</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="setting-content">
-                    <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
-                        aria-labelledby="todo-section">
-                        <div class="add-items d-flex px-3 mb-0">
-                            <form class="form w-100">
-                                <div class="form-group d-flex">
-                                    <input type="text" class="form-control todo-list-input"
-                                        placeholder="Add To-do">
-                                    <button type="submit" class="add btn btn-primary todo-list-add-btn"
-                                        id="add-task">Add</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="list-wrapper px-3">
-                            <ul class="d-flex flex-column-reverse todo-list">
-                                <li>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox">
-                                            Team review meeting at 3.00 PM
-                                        </label>
-                                    </div>
-                                    <i class="remove ti-close"></i>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox">
-                                            Prepare for presentation
-                                        </label>
-                                    </div>
-                                    <i class="remove ti-close"></i>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox">
-                                            Resolve all the low priority tickets due today
-                                        </label>
-                                    </div>
-                                    <i class="remove ti-close"></i>
-                                </li>
-                                <li class="completed">
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox" checked>
-                                            Schedule meeting for next week
-                                        </label>
-                                    </div>
-                                    <i class="remove ti-close"></i>
-                                </li>
-                                <li class="completed">
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox" checked>
-                                            Project review
-                                        </label>
-                                    </div>
-                                    <i class="remove ti-close"></i>
-                                </li>
-                            </ul>
-                        </div>
-                        <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
-                        <div class="events pt-4 px-3">
-                            <div class="wrapper d-flex mb-2">
-                                <i class="ti-control-record text-primary mr-2"></i>
-                                <span>Feb 11 2018</span>
-                            </div>
-                            <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
-                            <p class="text-gray mb-0">The total number of sessions</p>
-                        </div>
-                        <div class="events pt-4 px-3">
-                            <div class="wrapper d-flex mb-2">
-                                <i class="ti-control-record text-primary mr-2"></i>
-                                <span>Feb 7 2018</span>
-                            </div>
-                            <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-                            <p class="text-gray mb-0 ">Call Sarah Graves</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- partial -->
-            <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/dashboard/pemilik">
+                        <a class="nav-link" href="/pemilik/dashboard">
                             <span class="menu-title"><i class="bi bi-house-door-fill"></i> Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="/locations" aria-expanded="false"
+                        <a class="nav-link" data-toggle="collapse" href="/pemilik/lokasi-pembuangan-sampah" aria-expanded="false"
                             aria-controls="ui-basic">
-
-                            <span class="menu-title"><i class="bi bi-geo-alt-fill"></i> Maps</span>
+                            <span class="menu-title"><i class="bi bi-geo-alt-fill"></i> Lokasi Pembuangan</span>
                         </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                            </ul>
-                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="/luaran/pemilik" aria-expanded="false"
-                            aria-controls="ui-basic">
-
-                            <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i></i> Luaran</span>
+                        <a class="nav-link" href="/pemilik/luaran">
+                            <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i> Luaran</span>
                         </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                            </ul>
-                        </div>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="/riwayat/pemilik" aria-expanded="false"
-                            aria-controls="ui-basic">
-
-                            <span class="menu-title"><i class="bi bi-clock-history"></i> History</span>
-                        </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                            </ul>
-                        </div>
-                    </li> --}}
                     <li class="nav-item">
-                        <a class="dropdown-item border-top" href="/logout"><i class="bi bi-box-arrow-right"></i> Log
-                            Out</a>
+                        <a class="nav-link" href="/berlangganan">
+                            <span class="menu-title"><i class="bi bi-star-fill"></i> Subscription</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-item border-top" href="/logout"><i class="bi bi-box-arrow-right"></i>
+                            Logout</a>
                         <i class="icon-paper menu-icon"></i>
                         </button>
                     </li>
@@ -228,8 +90,8 @@
                         <div class="col-md-12 grid-margin">
                             <div class="row">
                                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                    <h3 class="font-weight-bold">Welcome! {{ Auth::user()->user ?? '' }}</h3>
-                                    <h6 class="font-weight-normal mb-0">Kamu dapat melihat pesananmu di halaman ini!
+                                    <h3 class="font-weight-bold">Luaran Pemilik Sampah</h3>
+                                    <h6 class="font-weight-normal mb-0">Kamu dapat melihat luaranmu di sini!
                                     </h6>
                                 </div>
                             </div>
@@ -239,10 +101,13 @@
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="chart-container">
+                                        {!! $chart->container() !!}
+                                    </div>
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <p class="card-title">Riwayat pesananmu</p>
+                                        <p class="card-title">Riwayat Pesananmu</p>
                                         <a class="btn btn-primary" href="/generate-pdf" role="button" type="submit">
-                                             <i class="bi bi-printer-fill"> Print All</i>
+                                            <b class="bi bi-printer-fill"> Print All</b>
                                         </a>
                                     </div>
                                     <div class="row">
@@ -323,7 +188,7 @@
                                                             <th>Status</th>
                                                             <th>Apakah sudah diambil?</th>
                                                             <th>Harga</th>
-                                                            <th>Action</th>
+                                                            <th>Print</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -332,7 +197,7 @@
                                                                 <th scope="row">{{ $orders->firstItem() + $idx }}
                                                                 </th>
                                                                 <td>{{ optional($n->location)->nama_location }}</td>
-                                                                <td>{{ $n->kg_sampah }} Kg</td>
+                                                                <td>{{ $n->kg_sampah }} kg</td>
                                                                 <td>{{ $n->jam }} WIB</td>
                                                                 <td>{{ $n->jns_smph }}</td>
                                                                 <td>
@@ -340,9 +205,11 @@
                                                                         class="badge badge-{{ $n->status === 'Diterima' ? 'success' : 'warning' }}">{{ $n->status }}</span>
                                                                 </td>
                                                                 <td>{{ $n->pengambilan }}</td>
-                                                                <td>Rp {{ number_format($n->harga, 0, ',', '.') }}</td>
+                                                                <td>Rp<br>{{ number_format($n->harga, 0, ',', '.') }}</td>
                                                                 <td>
-                                                                    <a class="btn btn-primary" href="/pemilik/cetak/{{ $n->id }}" role="button" type="submit">Print
+                                                                    <a class="btn btn-primary"
+                                                                        href="/pemilik/cetak/{{ $n->id }}"
+                                                                        role="button" type="submit">
                                                                         <i class="bi bi-printer-fill"></i>
                                                                     </a>
                                                                 </td>
@@ -364,17 +231,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="text-2xl font-semibold mb-4">Total sampah yang sudah kamu buang Bulan ini</h2>
-                                <div class="chart-container">
-                                    {!! $chart->container() !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
+
                     <!-- Include the necessary scripts for the chart -->
                     <script src="{{ $chart->cdn() }}"></script>
                     {{ $chart->script() }}

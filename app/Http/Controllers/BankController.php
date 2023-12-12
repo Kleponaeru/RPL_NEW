@@ -22,7 +22,7 @@ class BankController extends Controller
         // Update your model or database table with the new status value
         PemilikSampah::where('id', $id)->update(['status' => $statusValue]);
 
-        return redirect('/dashboard/bank')->with('flash_status', 'Status Successfully Updated');
+        return redirect('/bank/dashboard')->with('flash_status', 'Status Successfully Updated');
     }
     public function profilebank(){
         // $n = User::find($id_user);

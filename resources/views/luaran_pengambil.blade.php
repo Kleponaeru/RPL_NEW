@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Luaran Pengambil</title>
+    <title>LUNA | Luaran Pengambil</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/feather/feather.css">
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -46,8 +46,8 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="icon-menu"></span>
                 </button>
-                <a class="btn btn-primary" href="/profile/pemilik" role="button">Profile <i
-                        class="bi bi-person-fill"></i></a>
+                <a class="btn btn-primary" href="/pemilik/profile" role="button"><i
+                        class="bi bi-person-circle"></i></a>
 
 
             </div>
@@ -57,18 +57,18 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/dashboard/pengambil">
+                        <a class="nav-link" href="/pengambil/dashboard">
                             <span class="menu-title"><i class="bi bi-house-door-fill"></i> Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="/locations" aria-expanded="false"
+                        <a class="nav-link" data-toggle="collapse" href="/pengambil/titik-jemput" aria-expanded="false"
                             aria-controls="ui-basic">
-                            <span class="menu-title"><i class="bi bi-geo-alt-fill"></i> Maps</span>
+                            <span class="menu-title"><i class="bi bi-geo-alt-fill"></i> Titik Jemput</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/luaran/pengambil">
+                        <a class="nav-link" href="/pengambil/luaran">
                             <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i> Luaran</span>
                         </a>
                     </li>
@@ -88,35 +88,37 @@
                         <div class="col-md-12 grid-margin">
                             <div class="row">
                                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                    <h3 class="font-weight-bold">Selamat datang! {{ Auth::user()->username ?? '' }}</h3>
-                                    <h6 class="font-weight-normal mb-0">Kamu dapat melihat daftar pesanan di halaman ini!</h6>
+                                    <h3 class="font-weight-bold">Luaran Pengambil Sampah
+                                        {{ Auth::user()->username ?? '' }}</h3>
+                                    <h6 class="font-weight-normal mb-0">Kamu dapat melihat luaranmu di sini!</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-        
+
                     <div class="row">
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="chart-container">
+                                        {!! $chart->container() !!}
+                                    </div>
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <p class="card-title">Pesanan Selesai</p>
-                                        {{-- <a class="btn btn-primary" href="#" role="button" id="ambilKomisiBtn">
-                                            <i class="bi bi-currency-dollar"> Ambil Komisi</i>
-                                        </a> --}}
+                                        <p class="card-title">Daftar Pesanan Selesai</p>
                                         <a class="btn btn-primary" href="/generate-pdf" role="button" type="submit">
-                                            <i class="bi bi-printer-fill"> Print All</i>
-                                       </a>       
+                                            <b class="bi bi-printer-fill"> Print All</b>
+                                        </a>
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="table-responsive">
-        
+
                                                 @php
                                                     $grandTotal = 0;
                                                 @endphp
-        
-                                                <table id="example" class="display expandable-table" style="width:100%">
+
+                                                <table id="example" class="display expandable-table"
+                                                    style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
@@ -134,7 +136,8 @@
                                                     <tbody>
                                                         @foreach ($orders as $idx => $n)
                                                             <tr>
-                                                                <th scope="row">{{ $orders->firstItem() + $idx }}</th>
+                                                                <th scope="row">{{ $orders->firstItem() + $idx }}
+                                                                </th>
                                                                 <td>{{ optional($n->location)->nama_location }}</td>
                                                                 <td>{{ $n->kg_sampah }} kg</td>
                                                                 <td>{{ $n->jam }} WIB</td>
@@ -149,9 +152,12 @@
                                                                     </span>
                                                                 </td>
                                                                 <td>{{ $n->pengambilan }}</td>
-                                                                <td>Rp<br>{{ number_format($n->harga, 0, ',', '.') }}</td>
+                                                                <td>Rp<br>{{ number_format($n->harga, 0, ',', '.') }}
+                                                                </td>
                                                                 <td>
-                                                                    <a class="btn btn-primary" href="/pemilik/cetak/{{ $n->id }}" role="button" type="submit">Print
+                                                                    <a class="btn btn-primary"
+                                                                        href="/pemilik/cetak/{{ $n->id }}"
+                                                                        role="button" type="submit">
                                                                         <i class="bi bi-printer-fill"></i>
                                                                     </a>
                                                                 </td>
@@ -163,15 +169,17 @@
                                                     </tbody>
                                                 </table>
                                                 <div>
-                                                    <a class="btn btn-primary" href="#" role="button" id="ambilKomisiBtn">
-                                                        <i class="bi bi-currency-dollar"> Ambil Komisi</i>
+                                                    <a class="btn btn-primary" href="#" role="button"
+                                                        id="ambilKomisiBtn">
+                                                        <b class="bi bi-wallet2"> Ambil Komisi</b>
                                                     </a>
-                                                
+
                                                     <div style="margin-top: 10px;">
-                                                        <p>Grand Total: Rp {{ number_format($grandTotal, 0, ',', '.') }}</p>
+                                                        <p>Grand Total: Rp
+                                                            {{ number_format($grandTotal, 0, ',', '.') }}</p>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -179,30 +187,27 @@
                             </div>
                         </div>
                     </div>
-        
+
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="text-2xl font-semibold mb-4">Transaksi Bulan ini</h2>
-                                <div class="chart-container">
-                                    {!! $chart->container() !!}
-                                </div>
+
                             </div>
                         </div>
                     </div>
-        
+
                     <!-- Include the necessary scripts for the chart -->
                     <script src="{{ $chart->cdn() }}"></script>
                     {{ $chart->script() }}
                 </div>
             </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
-                <!-- partial -->
-            </div>
-            <!-- main-panel ends -->
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <!-- partial -->
         </div>
-        <!-- page-body-wrapper ends -->
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
 
@@ -216,7 +221,7 @@
     <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
     <script src="js/dataTables.select.min.js"></script>
 
-    <!-- End plugin js for this page -->    
+    <!-- End plugin js for this page -->
 
     <!-- inject:js -->
     <script src="js/off-canvas.js"></script>
@@ -231,7 +236,7 @@
     <script src="js/Chart.roundedBarCharts.js"></script>
     <!-- End custom js for this page-->
     <!-- Modal for Ambil Komisi -->
-    
+
     <!-- Payment Success Notification -->
     <div id="paymentSuccessNotification" class="notification">
         Payment Successful!
@@ -240,25 +245,25 @@
         function showConfirmationDialog() {
             return confirm("Are you sure you want to take the commission?");
         }
-    
-        document.getElementById('ambilKomisiBtn').addEventListener('click', function () {
+
+        document.getElementById('ambilKomisiBtn').addEventListener('click', function() {
             if (showConfirmationDialog()) {
                 // Perform your desired action here
                 var url = this.getAttribute('data-url');
-    
+
                 // Simulate an AJAX request to 'ambil-komisi' route
                 // Replace this with an actual AJAX request if needed
                 // For demonstration purposes, this uses a simple alert
-                setTimeout(function () {
+                setTimeout(function() {
                     // Show success notification
                     alert("Ambil Komisi success!");
                 }, 500);
             }
         });
     </script>
-    
-     
-    
+
+
+
 
 </body>
 

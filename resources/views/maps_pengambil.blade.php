@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LUNA | Lokasi Pembuangan</title>
+    <title>LUNA | Titik Jemput</title>
     <!-- Add Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -14,11 +14,35 @@
             width: 100%;
         }
 
-        #locationName {
+        #pickUpLists {
+            margin-top: 20px;
+        }
+
+        #validPickUps,
+        #invalidPickUps {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #validPickUps li,
+        #invalidPickUps li {
+            cursor: pointer;
             margin-bottom: 10px;
-            font-weight: bold;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: background-color 0.3s ease;
+            /* Add transition for a smoother effect */
+        }
+
+        #validPickUps li:hover,
+        #invalidPickUps li:hover {
+            background-color: #f0f0f0;
+            /* Change the background color on hover */
         }
     </style>
+
 
     <link rel="stylesheet" href="vendors/feather/feather.css">
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -95,24 +119,19 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/pemilik/dashboard">
+                        <a class="nav-link" href="/pengambil/dashboard">
                             <span class="menu-title"><i class="bi bi-house-door-fill"></i> Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="/pemilik/lokasi-pembuangan-sampah" aria-expanded="false"
+                        <a class="nav-link" data-toggle="collapse" href="/pengambil/titik-jemput" aria-expanded="false"
                             aria-controls="ui-basic">
-                            <span class="menu-title"><i class="bi bi-geo-alt-fill"></i> Lokasi Pembuangan</span>
+                            <span class="menu-title"><i class="bi bi-geo-alt-fill"></i> Titik Jemput</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pemilik/luaran">
+                        <a class="nav-link" href="/pengambil/luaran">
                             <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i> Luaran</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/berlangganan">
-                            <span class="menu-title"><i class="bi bi-star-fill"></i> Subscription</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -129,8 +148,24 @@
                         <div class="col-md-12 grid-margin">
                             <div class="row">
                                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                    <h3 class="font-weight-bold">Lokasi Pembuangan Sampah</h3>
-                                    <h6 id="locationName" class="font-weight-normal">Klik pada peta untuk mengetahui lokasi pembuangan sampah secara mandiri.</h6>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 class="card-title">Masih Berlangganan (Valid)</h2>
+                                            <form id="validPickUpsForm">
+                                                <div class="form-group">
+                                                    <ul id="validPickUps" class="list-group"></ul>
+                                                </div>
+                                            </form>
+
+                                            <h2 class="card-title">Sudah Tidak Berlangganan (Tidak Valid)</h2>
+                                            <form id="invalidPickUpsForm">
+                                                <div class="form-group">
+                                                    <ul id="invalidPickUps" class="list-group"></ul>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
                                     <div id="map"></div>
                                 </div>
                             </div>
@@ -141,20 +176,19 @@
         </div>
     </div>
 
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script>
-        var locations = @json($locations);
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
         var map = L.map('map').setView([0, 0], 30);
-        // Add a basemap (e.g., OpenStreetMap)
+
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        // Get the user's geolocation and add a marker
         navigator.geolocation.getCurrentPosition(function(position) {
             var lat = position.coords.latitude;
             var lon = position.coords.longitude;
@@ -163,28 +197,34 @@
             userLocation.bindPopup('You are here!').openPopup();
         });
 
-        // Display the location name above the map
-        function displayLocationName(nama_location) {
-            var locationNameElement = document.getElementById('locationName');
-            locationNameElement.textContent = 'Kamu sedang memilih ' + nama_location + '.';
-        }
+        var locations = <?php echo json_encode($locations); ?>;
+        var validLocationIds = [1, 3]; // Masukkin id_location valid di sini
+        var validPickUpsList = document.getElementById('validPickUps');
+        var invalidPickUpsList = document.getElementById('invalidPickUps');
 
-        // Add a marker to all destinations
         locations.forEach(function(location) {
-            var marker = L.marker([location.latitude, location.longitude])
+            var pickUpList = validLocationIds.includes(location.id_location) ? validPickUpsList :
+                invalidPickUpsList;
+
+            var listItem = document.createElement('li');
+            listItem.innerHTML = '<strong>' + location.nama_location + '</strong><br>' +
+                'Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude;
+
+            listItem.addEventListener('click', function() {
+                map.setView([location.latitude, location.longitude], 18);
+            });
+
+            pickUpList.appendChild(listItem);
+
+            L.marker([location.latitude, location.longitude])
                 .addTo(map)
                 .bindPopup('<strong>' + location.nama_location + '</strong><br>' +
-                    'Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude +
-                    '<br><br><a href="/pemilik/buang' + '">Buang sampah ke TPA ini</a>')
-                .openPopup();
-
-            marker.on('click', function() {
-                // Handle marker click
-                displayLocationName(location.nama_location);
-            });
+                    'Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude)
+                .openPopup().on('click', function() {
+                    window.location.href = '/' + location.nama_location;
+                });
         });
     </script>
-
 </body>
 
 </html>
