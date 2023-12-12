@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['guest'])->group(function () {
     Route::get('/berlangganan', [PageController::class, 'berlangganan']);
     Route::get('/chart', [PageController::class, 'chart']);
-    Route::get('/riwayat/pemilik', [PemilikController::class, 'riwayat']);
+    
     // Route::get('/grafik', [PageController::class, 'grafik']);
     Route::get('/locations', [LocationController::class, 'index']);
     Route::get('/', [PageController::class, 'home']);
@@ -58,11 +58,13 @@ Route::middleware(['guest'])->group(function () {
             Route::get('/generate-pdf', [PemilikController::class, 'generatePDF']);
             Route::get('/pemilik/cetak/{id}', [PemilikController::class, 'PDFperrow']);
             Route::delete('/pemilik/delete/{id}', [PemilikController::class, 'delete']);
+            Route::get('/luaran/pemilik', [PemilikController::class, 'luaran']);
 
         // });
         // Route::middleware(['CekRole:Bank'])->group(function () {
             Route::get('/dashboard/bank', [BankController::class, 'Bank']);
             Route::get('/profile/bank', [BankController::class, 'profilebank']);
+            Route::get('/luaran/bank', [BankController::class, 'luaran']);
             Route::put('/status/confirm/bank/{id}', [BankController::class, 'updatestatusBank'])->name('confirm.status.bank');
             Route::put('/status/change/bank/{id}', [BankController::class, 'updatestatusBank'])->name('change.status.bank');
 
