@@ -69,6 +69,11 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/luaran/bank">
+                            <span class="menu-title"><i class="bi bi-layout-sidebar-inset"></i> Luaran</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="dropdown-item border-top" href="/logout"><i class="bi bi-box-arrow-right"></i>
                             Logout</a>
                         <i class="icon-paper menu-icon"></i>
@@ -249,6 +254,7 @@
                                                             <th>Jenis</th>
                                                             <th>Bank?</th>
                                                             <th>Pengambil?</th>
+                                                            <th>Harga</th>
                                                             <th>Terima/Tolak?</th>
                                                         </tr>
                                                     </thead>
@@ -286,6 +292,8 @@
                                                                         </span>
                                                                     </td>
                                                                     <td>{{ $n->pengambilan }}</td>
+                                                                    <td>Rp<br>{{ number_format($n->harga, 0, ',', '.') }}
+                                                                    </td>
 
                                                                     <td>
                                                                         <form method="POST"

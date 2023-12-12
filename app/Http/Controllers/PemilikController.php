@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\charCoba;
 use App\Models\PemilikSampah;
 use App\Models\Riwayat;
 use Illuminate\Http\Request;
@@ -19,10 +20,10 @@ class PemilikController extends Controller
         $orders = PemilikSampah::orderBy('id', 'desc')->paginate(15);
         return view('dashboard_pemilik', ['orders' => $orders]);
     }
-    public function riwayat()
+    public function luaran(charCoba $chart)
     {
         $orders = Riwayat::orderBy('id', 'desc')->paginate(15);
-        return view('riwayat_pemilik', ['orders' => $orders]);
+        return view('luaran_pemilik', ['orders' => $orders], ['chart' => $chart->build()]);
     }
 
     public function formPesanan()
@@ -90,7 +91,7 @@ class PemilikController extends Controller
         $sum = $data->sum('harga');
         $pdf->loadView('pdf', compact('data', 'sum'));
 
-        return $pdf->download('data.pdf');
+        return $pdf->download('Luna-Invoice.pdf');
     }
 
     public function PDFperrow($id)
@@ -99,7 +100,7 @@ class PemilikController extends Controller
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('pdfbyid', compact('data'));
 
-        return $pdf->download('data.pdf', ['data'=>$data]);
+        return $pdf->download('Luna-Invoice.pdf', ['data'=>$data]);
     }
 
 }

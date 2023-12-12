@@ -101,12 +101,12 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <p class="card-title">Pesanan Selesai</p>
-                                        <a class="btn btn-primary" href="#" role="button" id="ambilKomisiBtn">
-                                            <i class="bi bi-plus-circle-fill"> Ambil Komisi</i>
-                                        </a>
-                                        
-                                        
-                                        
+                                        {{-- <a class="btn btn-primary" href="#" role="button" id="ambilKomisiBtn">
+                                            <i class="bi bi-currency-dollar"> Ambil Komisi</i>
+                                        </a> --}}
+                                        <a class="btn btn-primary" href="/generate-pdf" role="button" type="submit">
+                                            <i class="bi bi-printer-fill"> Print All</i>
+                                       </a>       
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
@@ -127,6 +127,7 @@
                                                             <th>Bank?</th>
                                                             <th>Pengambil?</th>
                                                             <th>Harga</th>
+                                                            <th>Action</th>
                                                             {{-- Additional table headers if needed --}}
                                                         </tr>
                                                     </thead>
@@ -150,7 +151,9 @@
                                                                 <td>{{ $n->pengambilan }}</td>
                                                                 <td>Rp<br>{{ number_format($n->harga, 0, ',', '.') }}</td>
                                                                 <td>
-                                                                    {{-- Additional table data if needed --}}
+                                                                    <a class="btn btn-primary" href="/pemilik/cetak/{{ $n->id }}" role="button" type="submit">Print
+                                                                        <i class="bi bi-printer-fill"></i>
+                                                                    </a>
                                                                 </td>
                                                             </tr>
                                                             @php
@@ -160,8 +163,15 @@
                                                     </tbody>
                                                 </table>
                                                 <div>
-                                                    <p>Grand Total: Rp {{ number_format($grandTotal, 0, ',', '.') }}</p>
+                                                    <a class="btn btn-primary" href="#" role="button" id="ambilKomisiBtn">
+                                                        <i class="bi bi-currency-dollar"> Ambil Komisi</i>
+                                                    </a>
+                                                
+                                                    <div style="margin-top: 10px;">
+                                                        <p>Grand Total: Rp {{ number_format($grandTotal, 0, ',', '.') }}</p>
+                                                    </div>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

@@ -56,6 +56,7 @@
         <thead>
         <tr>
             {{-- <th>Item</th> --}}
+            <th>Tgl Trans</th>
             <th>Bank Sampah</th>
             <th>Berat Sampah</th>
             <th>Jenis</th>
@@ -66,6 +67,7 @@
         <tbody>
         <tr>
             {{-- <td>1</td> --}}
+            <td>{{ $data->updated_at }}</td>
             <td>{{ optional($data->location)->nama_location }}</td>
             <td>{{$data->kg_sampah}} Kg</td>
             <td>{{$data->jns_smph}}</td>
