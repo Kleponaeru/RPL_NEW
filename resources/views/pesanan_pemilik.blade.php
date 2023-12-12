@@ -7,9 +7,15 @@
                 <div class="col-md-6 mt-3">
                     <div class="card">
                         <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <a href="{{ url()->previous() }}" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left"></i> Kembali
+                                </a>
+                                <h2 class="mb-4 fs-4 fw-bold text-center w-100">Pemesanan Sampah</h2>
+                            </div>
                             <form action="/pemilik/postpesanan" method="POST">
                                 @csrf
-                                <h2 class="mb-4 fs-4 fw-bold text-center">Pemesanan Sampah</h2>
+                                {{-- <h2 class="mb-4 fs-4 fw-bold text-center">Pemesanan Sampah</h2> --}}
 
                                 <div class="mb-3 row align-items-center">
                                     <label for="berat" class="col-sm-4 col-form-label">Berat Sampah (kg)</label>

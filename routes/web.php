@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['guest'])->group(function () {
     Route::get('/berlangganan', [PageController::class, 'berlangganan']);
     Route::get('/chart', [PageController::class, 'chart']);
-    
+
     // Route::get('/grafik', [PageController::class, 'grafik']);
     Route::get('/locations', [LocationController::class, 'index']);
     Route::get('/', [PageController::class, 'home']);

@@ -121,27 +121,25 @@
 
                                 <script>
                                     function showPosition(position) {
-                                        // Get latitude and longitude from the Geolocation API
                                         var latitude = position.coords.latitude;
                                         var longitude = position.coords.longitude;
 
-                                        // Update the input fields with the obtained coordinates
                                         document.getElementById('latitude').value = latitude;
                                         document.getElementById('longitude').value = longitude;
 
-                                        // Create OpenStreetMap URL with the obtained coordinates
-                                        var osmUrl = 'https://openstreetmap.org/?mlat=${latitude}&mlon=${longitude}#map=15/${latitude}/${longitude}';
+                                        var osmUrl =
+                                        `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}#map=15/${latitude}/${longitude}`;
 
-                                        // Display the map in the 'map' div
-                                        document.getElementById('map').innerHTML = `<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="${osmUrl}"></iframe>`;
+                                        document.getElementById('map').innerHTML =
+                                            `<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="${osmUrl}"></iframe>`;
                                     }
 
-                                    // Function to handle errors if geolocation is not supported or user denies permission
                                     function showError(error) {
-                                        alert(`Error getting your location: ${error.message}`);
+                                        var errorMessage = `Error getting your location: ${error.message}`;
+                                        console.error(errorMessage);
+                                        alert(errorMessage);
                                     }
 
-                                    // Get the user's current position when the page loads
                                     navigator.geolocation.getCurrentPosition(showPosition, showError);
                                 </script>
                             </div>
@@ -172,7 +170,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" >E-mail address</label>
+                                <label class="col-sm-2 control-label">E-mail address</label>
                                 <div class="col-sm-10">
                                     <input type="email" class="form-control" readonly>
                                 </div>
