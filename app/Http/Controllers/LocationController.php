@@ -14,4 +14,5 @@ class LocationController extends Controller
         // Send all locations to the view named maps
         return view('maps', ['locations' => $locations]);
     }
+
 }
