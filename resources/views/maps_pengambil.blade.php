@@ -207,21 +207,21 @@
                 invalidPickUpsList;
 
             var listItem = document.createElement('li');
-            listItem.innerHTML = '<strong>' + location.nama_location + '</strong><br>' +
-                'Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude;
+            listItem.innerHTML = '<strong>' + location.alamat + '</strong><br>' +
+                'Latitude: ' + location.latitude_alamat + '<br>Longitude: ' + location.longtitude_alamat;
 
             listItem.addEventListener('click', function() {
-                map.setView([location.latitude, location.longitude], 18);
+                map.setView([location.latitude_alamat, location.longtitude_alamat], 18);
             });
 
             pickUpList.appendChild(listItem);
 
-            L.marker([location.latitude, location.longitude])
+            L.marker([location.latitude_alamat, location.longtitude_alamat])
                 .addTo(map)
-                .bindPopup('<strong>' + location.nama_location + '</strong><br>' +
-                    'Latitude: ' + location.latitude + '<br>Longitude: ' + location.longitude)
+                .bindPopup('<strong>' + location.alamat + '</strong><br>' +
+                    'Latitude: ' + location.latitude_alamat + '<br>Longitude: ' + location.longtitude_alamat)
                 .openPopup().on('click', function() {
-                    window.location.href = '/' + location.nama_location;
+                    window.location.href = '/' + location.alamat;
                 });
         });
     </script>
